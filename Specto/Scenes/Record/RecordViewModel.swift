@@ -1,0 +1,31 @@
+//
+//  RecordViewModel.swift
+//  Specto
+//
+//  Created by Moeen Zamani on 2/17/21.
+//
+
+import Foundation
+
+class RecordViewModel: ObservableObject, FFT {
+
+    @Published var amplitudes = [[Double]]()
+
+    private var session: RecordingSession?
+    
+    init() {
+        do {
+            try session = RecordingSession()
+        } catch {}
+    }
+
+    func startSession() {
+        do {
+            try session?.startSession()
+        } catch {}
+    }
+
+    func handoff(amplitudes: [[Double]]) {
+        self.amplitudes = amplitudes
+    }
+}

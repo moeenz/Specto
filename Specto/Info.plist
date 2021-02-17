@@ -29,6 +29,10 @@
 	<true/>
 	<key>UILaunchScreen</key>
 	<dict/>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>We use microphone to record and process audio input</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>We use speech recognition to detect verbal context</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

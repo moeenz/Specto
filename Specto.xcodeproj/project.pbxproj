@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,24 @@
 		0FBA25A325DDA6D60001D9D3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0FBA25A225DDA6D60001D9D3 /* Preview Assets.xcassets */; };
 		0FBA25AE25DDA6D60001D9D3 /* SpectoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBA25AD25DDA6D60001D9D3 /* SpectoTests.swift */; };
 		0FBA25B925DDA6D60001D9D3 /* SpectoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBA25B825DDA6D60001D9D3 /* SpectoUITests.swift */; };
+		0FE7200125DDAA8F00CB6B06 /* AudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0FE7200025DDAA8F00CB6B06 /* AudioKit */; };
+		0FE7200B25DDAB5A00CB6B06 /* Carl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE7200A25DDAB5A00CB6B06 /* Carl.swift */; };
+		0FE7201325DDAB8100CB6B06 /* Leaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE7201225DDAB8100CB6B06 /* Leaker.swift */; };
+		0FE7201B25DDAB9300CB6B06 /* FFT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE7201A25DDAB9300CB6B06 /* FFT.swift */; };
+		0FE7202025DDABAD00CB6B06 /* Charles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE7201F25DDABAD00CB6B06 /* Charles.swift */; };
+		0FE7202525DDABC100CB6B06 /* Scripter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE7202425DDABC100CB6B06 /* Scripter.swift */; };
+		0FE7202B25DDABE500CB6B06 /* DataStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0FE7202925DDABE500CB6B06 /* DataStore.xcdatamodeld */; };
+		0FE7203025DDABFC00CB6B06 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE7202F25DDABFC00CB6B06 /* PersistenceController.swift */; };
+		0FE7203525DDAC4900CB6B06 /* RecordingInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE7203425DDAC4900CB6B06 /* RecordingInteractor.swift */; };
+		0FE7203A25DDAC6800CB6B06 /* RecordingSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE7203925DDAC6800CB6B06 /* RecordingSession.swift */; };
+		0FE7203F25DDAC8400CB6B06 /* Date+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE7203E25DDAC8400CB6B06 /* Date+extensions.swift */; };
+		0FE7204E25DDAD6300CB6B06 /* RecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE7204D25DDAD6300CB6B06 /* RecordViewModel.swift */; };
+		0FE7205625DDADE600CB6B06 /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE7205525DDADE600CB6B06 /* RecordView.swift */; };
+		0FE7205B25DDAE1E00CB6B06 /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE7205A25DDAE1E00CB6B06 /* GalleryView.swift */; };
+		0FE7206225DDAF3600CB6B06 /* AudioVisualizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE7206125DDAF3600CB6B06 /* AudioVisualizer.swift */; };
+		1930B5208F739DDC920FE3F2 /* Pods_SpectoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28DAA1457C7CAF8E40B247CD /* Pods_SpectoUITests.framework */; };
+		9EB92A05ECE04D3610C8FC30 /* Pods_Specto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15B5E83D6B8923E979A2E5C9 /* Pods_Specto.framework */; };
+		9F66CD11BD392C182365D996 /* Pods_SpectoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E0092205442F102ED933461 /* Pods_SpectoTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +63,29 @@
 		0FBA25B425DDA6D60001D9D3 /* SpectoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpectoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FBA25B825DDA6D60001D9D3 /* SpectoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpectoUITests.swift; sourceTree = "<group>"; };
 		0FBA25BA25DDA6D60001D9D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0FE7200A25DDAB5A00CB6B06 /* Carl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Carl.swift; sourceTree = "<group>"; };
+		0FE7201225DDAB8100CB6B06 /* Leaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leaker.swift; sourceTree = "<group>"; };
+		0FE7201A25DDAB9300CB6B06 /* FFT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFT.swift; sourceTree = "<group>"; };
+		0FE7201F25DDABAD00CB6B06 /* Charles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Charles.swift; sourceTree = "<group>"; };
+		0FE7202425DDABC100CB6B06 /* Scripter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scripter.swift; sourceTree = "<group>"; };
+		0FE7202A25DDABE500CB6B06 /* DataStore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataStore.xcdatamodel; sourceTree = "<group>"; };
+		0FE7202F25DDABFC00CB6B06 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
+		0FE7203425DDAC4900CB6B06 /* RecordingInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingInteractor.swift; sourceTree = "<group>"; };
+		0FE7203925DDAC6800CB6B06 /* RecordingSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingSession.swift; sourceTree = "<group>"; };
+		0FE7203E25DDAC8400CB6B06 /* Date+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+extensions.swift"; sourceTree = "<group>"; };
+		0FE7204D25DDAD6300CB6B06 /* RecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewModel.swift; sourceTree = "<group>"; };
+		0FE7205525DDADE600CB6B06 /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
+		0FE7205A25DDAE1E00CB6B06 /* GalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryView.swift; sourceTree = "<group>"; };
+		0FE7206125DDAF3600CB6B06 /* AudioVisualizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioVisualizer.swift; sourceTree = "<group>"; };
+		15B5E83D6B8923E979A2E5C9 /* Pods_Specto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Specto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1E0092205442F102ED933461 /* Pods_SpectoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpectoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		28DAA1457C7CAF8E40B247CD /* Pods_SpectoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpectoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D96174E15F616029C5E52FB /* Pods-Specto.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Specto.release.xcconfig"; path = "Pods/Target Support Files/Pods-Specto/Pods-Specto.release.xcconfig"; sourceTree = "<group>"; };
+		74E6C2502A93441B3AB57A46 /* Pods-Specto.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Specto.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Specto/Pods-Specto.debug.xcconfig"; sourceTree = "<group>"; };
+		8D81FF03DE71F18914EF6337 /* Pods-SpectoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpectoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpectoTests/Pods-SpectoTests.release.xcconfig"; sourceTree = "<group>"; };
+		99440A36E98FEF3CFEC3F44C /* Pods-SpectoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpectoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpectoTests/Pods-SpectoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E65969F11E4E9586C6E877A6 /* Pods-SpectoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpectoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpectoUITests/Pods-SpectoUITests.release.xcconfig"; sourceTree = "<group>"; };
+		FC270D875AC64E3083E046D6 /* Pods-SpectoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpectoUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpectoUITests/Pods-SpectoUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +93,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FE7200125DDAA8F00CB6B06 /* AudioKit in Frameworks */,
+				9EB92A05ECE04D3610C8FC30 /* Pods_Specto.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +102,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F66CD11BD392C182365D996 /* Pods_SpectoTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1930B5208F739DDC920FE3F2 /* Pods_SpectoUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +124,8 @@
 				0FBA25AC25DDA6D60001D9D3 /* SpectoTests */,
 				0FBA25B725DDA6D60001D9D3 /* SpectoUITests */,
 				0FBA259925DDA6D50001D9D3 /* Products */,
+				E3C417D5D49F58DD6446ACE2 /* Pods */,
+				694DEFF28B157B466B57416F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -95,6 +142,11 @@
 		0FBA259A25DDA6D50001D9D3 /* Specto */ = {
 			isa = PBXGroup;
 			children = (
+				0FE7204A25DDAD2200CB6B06 /* Scenes */,
+				0FE7200925DDAB4D00CB6B06 /* Utils */,
+				0FE7200825DDAB4400CB6B06 /* Audio */,
+				0FE7200725DDAB3800CB6B06 /* Recognition */,
+				0FE7200525DDAB2600CB6B06 /* Recording */,
 				0FBA259B25DDA6D50001D9D3 /* SpectoApp.swift */,
 				0FBA259D25DDA6D50001D9D3 /* ContentView.swift */,
 				0FBA259F25DDA6D60001D9D3 /* Assets.xcassets */,
@@ -130,6 +182,102 @@
 			path = SpectoUITests;
 			sourceTree = "<group>";
 		};
+		0FE7200525DDAB2600CB6B06 /* Recording */ = {
+			isa = PBXGroup;
+			children = (
+				0FE7202925DDABE500CB6B06 /* DataStore.xcdatamodeld */,
+				0FE7202F25DDABFC00CB6B06 /* PersistenceController.swift */,
+				0FE7203425DDAC4900CB6B06 /* RecordingInteractor.swift */,
+				0FE7203925DDAC6800CB6B06 /* RecordingSession.swift */,
+			);
+			path = Recording;
+			sourceTree = "<group>";
+		};
+		0FE7200725DDAB3800CB6B06 /* Recognition */ = {
+			isa = PBXGroup;
+			children = (
+				0FE7201F25DDABAD00CB6B06 /* Charles.swift */,
+				0FE7202425DDABC100CB6B06 /* Scripter.swift */,
+			);
+			path = Recognition;
+			sourceTree = "<group>";
+		};
+		0FE7200825DDAB4400CB6B06 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				0FE7200A25DDAB5A00CB6B06 /* Carl.swift */,
+				0FE7201225DDAB8100CB6B06 /* Leaker.swift */,
+				0FE7201A25DDAB9300CB6B06 /* FFT.swift */,
+			);
+			path = Audio;
+			sourceTree = "<group>";
+		};
+		0FE7200925DDAB4D00CB6B06 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				0FE7203E25DDAC8400CB6B06 /* Date+extensions.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		0FE7204A25DDAD2200CB6B06 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				0FE7206025DDAF1800CB6B06 /* Views */,
+				0FE7204C25DDAD3700CB6B06 /* Gallery */,
+				0FE7204B25DDAD2900CB6B06 /* Record */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		0FE7204B25DDAD2900CB6B06 /* Record */ = {
+			isa = PBXGroup;
+			children = (
+				0FE7204D25DDAD6300CB6B06 /* RecordViewModel.swift */,
+				0FE7205525DDADE600CB6B06 /* RecordView.swift */,
+			);
+			path = Record;
+			sourceTree = "<group>";
+		};
+		0FE7204C25DDAD3700CB6B06 /* Gallery */ = {
+			isa = PBXGroup;
+			children = (
+				0FE7205A25DDAE1E00CB6B06 /* GalleryView.swift */,
+			);
+			path = Gallery;
+			sourceTree = "<group>";
+		};
+		0FE7206025DDAF1800CB6B06 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0FE7206125DDAF3600CB6B06 /* AudioVisualizer.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		694DEFF28B157B466B57416F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				15B5E83D6B8923E979A2E5C9 /* Pods_Specto.framework */,
+				1E0092205442F102ED933461 /* Pods_SpectoTests.framework */,
+				28DAA1457C7CAF8E40B247CD /* Pods_SpectoUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E3C417D5D49F58DD6446ACE2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				74E6C2502A93441B3AB57A46 /* Pods-Specto.debug.xcconfig */,
+				2D96174E15F616029C5E52FB /* Pods-Specto.release.xcconfig */,
+				99440A36E98FEF3CFEC3F44C /* Pods-SpectoTests.debug.xcconfig */,
+				8D81FF03DE71F18914EF6337 /* Pods-SpectoTests.release.xcconfig */,
+				FC270D875AC64E3083E046D6 /* Pods-SpectoUITests.debug.xcconfig */,
+				E65969F11E4E9586C6E877A6 /* Pods-SpectoUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -137,15 +285,20 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0FBA25BD25DDA6D60001D9D3 /* Build configuration list for PBXNativeTarget "Specto" */;
 			buildPhases = (
+				DB7E499E153FDA9235172BB8 /* [CP] Check Pods Manifest.lock */,
 				0FBA259425DDA6D50001D9D3 /* Sources */,
 				0FBA259525DDA6D50001D9D3 /* Frameworks */,
 				0FBA259625DDA6D50001D9D3 /* Resources */,
+				80DE0C85C9C40D041BFB020B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = Specto;
+			packageProductDependencies = (
+				0FE7200025DDAA8F00CB6B06 /* AudioKit */,
+			);
 			productName = Specto;
 			productReference = 0FBA259825DDA6D50001D9D3 /* Specto.app */;
 			productType = "com.apple.product-type.application";
@@ -154,6 +307,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0FBA25C025DDA6D60001D9D3 /* Build configuration list for PBXNativeTarget "SpectoTests" */;
 			buildPhases = (
+				72DF9D4391FAF9FDDEF0D4EE /* [CP] Check Pods Manifest.lock */,
 				0FBA25A525DDA6D60001D9D3 /* Sources */,
 				0FBA25A625DDA6D60001D9D3 /* Frameworks */,
 				0FBA25A725DDA6D60001D9D3 /* Resources */,
@@ -172,6 +326,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0FBA25C325DDA6D60001D9D3 /* Build configuration list for PBXNativeTarget "SpectoUITests" */;
 			buildPhases = (
+				49FE8573A955DB54397E468B /* [CP] Check Pods Manifest.lock */,
 				0FBA25B025DDA6D60001D9D3 /* Sources */,
 				0FBA25B125DDA6D60001D9D3 /* Frameworks */,
 				0FBA25B225DDA6D60001D9D3 /* Resources */,
@@ -217,6 +372,9 @@
 				Base,
 			);
 			mainGroup = 0FBA258F25DDA6D50001D9D3;
+			packageReferences = (
+				0FE71FFF25DDAA8F00CB6B06 /* XCRemoteSwiftPackageReference "AudioKit" */,
+			);
 			productRefGroup = 0FBA259925DDA6D50001D9D3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -254,13 +412,102 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		49FE8573A955DB54397E468B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SpectoUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		72DF9D4391FAF9FDDEF0D4EE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SpectoTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		80DE0C85C9C40D041BFB020B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Specto/Pods-Specto-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Reductio/Reductio.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reductio.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Specto/Pods-Specto-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DB7E499E153FDA9235172BB8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Specto-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		0FBA259425DDA6D50001D9D3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FE7206225DDAF3600CB6B06 /* AudioVisualizer.swift in Sources */,
+				0FE7203025DDABFC00CB6B06 /* PersistenceController.swift in Sources */,
 				0FBA259E25DDA6D50001D9D3 /* ContentView.swift in Sources */,
+				0FE7202525DDABC100CB6B06 /* Scripter.swift in Sources */,
+				0FE7205625DDADE600CB6B06 /* RecordView.swift in Sources */,
+				0FE7205B25DDAE1E00CB6B06 /* GalleryView.swift in Sources */,
+				0FE7200B25DDAB5A00CB6B06 /* Carl.swift in Sources */,
 				0FBA259C25DDA6D50001D9D3 /* SpectoApp.swift in Sources */,
+				0FE7201B25DDAB9300CB6B06 /* FFT.swift in Sources */,
+				0FE7203525DDAC4900CB6B06 /* RecordingInteractor.swift in Sources */,
+				0FE7202B25DDABE500CB6B06 /* DataStore.xcdatamodeld in Sources */,
+				0FE7204E25DDAD6300CB6B06 /* RecordViewModel.swift in Sources */,
+				0FE7202025DDABAD00CB6B06 /* Charles.swift in Sources */,
+				0FE7203F25DDAC8400CB6B06 /* Date+extensions.swift in Sources */,
+				0FE7203A25DDAC6800CB6B06 /* RecordingSession.swift in Sources */,
+				0FE7201325DDAB8100CB6B06 /* Leaker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,6 +661,7 @@
 		};
 		0FBA25BE25DDA6D60001D9D3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 74E6C2502A93441B3AB57A46 /* Pods-Specto.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -436,6 +684,7 @@
 		};
 		0FBA25BF25DDA6D60001D9D3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2D96174E15F616029C5E52FB /* Pods-Specto.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -458,6 +707,7 @@
 		};
 		0FBA25C125DDA6D60001D9D3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 99440A36E98FEF3CFEC3F44C /* Pods-SpectoTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -480,6 +730,7 @@
 		};
 		0FBA25C225DDA6D60001D9D3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8D81FF03DE71F18914EF6337 /* Pods-SpectoTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -502,6 +753,7 @@
 		};
 		0FBA25C425DDA6D60001D9D3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FC270D875AC64E3083E046D6 /* Pods-SpectoUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -522,6 +774,7 @@
 		};
 		0FBA25C525DDA6D60001D9D3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E65969F11E4E9586C6E877A6 /* Pods-SpectoUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -580,6 +833,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0FE71FFF25DDAA8F00CB6B06 /* XCRemoteSwiftPackageReference "AudioKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AudioKit/AudioKit";
+			requirement = {
+				branch = "v5-main";
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0FE7200025DDAA8F00CB6B06 /* AudioKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0FE71FFF25DDAA8F00CB6B06 /* XCRemoteSwiftPackageReference "AudioKit" */;
+			productName = AudioKit;
+		};
+/* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		0FE7202925DDABE500CB6B06 /* DataStore.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				0FE7202A25DDABE500CB6B06 /* DataStore.xcdatamodel */,
+			);
+			currentVersion = 0FE7202A25DDABE500CB6B06 /* DataStore.xcdatamodel */;
+			path = DataStore.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 0FBA259025DDA6D50001D9D3 /* Project object */;
 }
