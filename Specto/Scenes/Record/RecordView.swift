@@ -19,7 +19,7 @@ struct RecordView: View {
             grantPermissions()
         }
 
-        viewModel.startSession()
+        
         
     }
 
@@ -31,7 +31,7 @@ struct RecordView: View {
         AudioVisualizer(amplitudes:  viewModel.amplitudes)
         //}
         Button("start recording") {
-        
+            viewModel.startSession()
             
         }
 
