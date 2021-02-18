@@ -24,18 +24,27 @@ struct RecordView: View {
     }
 
     var body: some View {
-        Text("Record View")
-            .padding()
+        VStack {
         
-        //if let p = viewModel.amplitudes {
-        AudioVisualizer(amplitudes:  viewModel.amplitudes)
-        //}
+
+            AudioVisualizer(amplitudes:  viewModel.amplitudes).frame(width: 300, height: 300)
+
+            
+            Text(viewModel.text)
         Button("start recording") {
             viewModel.startSession()
             
         }
+            
+            Button("Stop recording") {
+                viewModel.stopSession()
+                
+            }
+        
+        NavigationLink("All recordings", destination: LazyView(GalleryView()))
 
         // We can use viewModel.amplitudes to render AudioVisualizer view here
+        }//.navigationTitle("Record")
     }
     
     private func grantPermissions() {
