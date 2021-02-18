@@ -7,9 +7,10 @@
 
 import Foundation
 
-class RecordViewModel: ObservableObject, FFT {
-
+class RecordViewModel: ObservableObject, FFT, Scripter {
+    
     @Published var amplitudes = [[Double]]()
+    @Published var text: String = ""
 
     private var session: RecordingSession?
     
@@ -32,5 +33,9 @@ class RecordViewModel: ObservableObject, FFT {
 
     func handoff(amplitudes: [[Double]]) {
         self.amplitudes = amplitudes
+    }
+    
+    func handoff(text: String) {
+        self.text = text
     }
 }
