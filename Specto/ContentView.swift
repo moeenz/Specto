@@ -9,8 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
 
-    var body: some View {
-        RecordView()
+    var body: some View {        
+        GalleryView()
     }
 }
 

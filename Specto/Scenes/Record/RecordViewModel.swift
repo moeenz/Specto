@@ -24,6 +24,10 @@ class RecordViewModel: ObservableObject, FFT {
             try session?.startSession()
         } catch {}
     }
+    
+    func stopSession() {
+        session?.stopSession()
+    }
 
     func handoff(amplitudes: [[Double]]) {
         self.amplitudes = amplitudes
