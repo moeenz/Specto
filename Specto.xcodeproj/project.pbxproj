@@ -29,6 +29,7 @@
 		0FE7205B25DDAE1E00CB6B06 /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE7205A25DDAE1E00CB6B06 /* GalleryView.swift */; };
 		0FE7206225DDAF3600CB6B06 /* AudioVisualizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE7206125DDAF3600CB6B06 /* AudioVisualizer.swift */; };
 		1930B5208F739DDC920FE3F2 /* Pods_SpectoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28DAA1457C7CAF8E40B247CD /* Pods_SpectoUITests.framework */; };
+		7C0ED45825DE8DE00080C536 /* LazyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0ED45725DE8DE00080C536 /* LazyView.swift */; };
 		9EB92A05ECE04D3610C8FC30 /* Pods_Specto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15B5E83D6B8923E979A2E5C9 /* Pods_Specto.framework */; };
 		9F66CD11BD392C182365D996 /* Pods_SpectoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E0092205442F102ED933461 /* Pods_SpectoTests.framework */; };
 /* End PBXBuildFile section */
@@ -82,6 +83,7 @@
 		28DAA1457C7CAF8E40B247CD /* Pods_SpectoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpectoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D96174E15F616029C5E52FB /* Pods-Specto.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Specto.release.xcconfig"; path = "Pods/Target Support Files/Pods-Specto/Pods-Specto.release.xcconfig"; sourceTree = "<group>"; };
 		74E6C2502A93441B3AB57A46 /* Pods-Specto.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Specto.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Specto/Pods-Specto.debug.xcconfig"; sourceTree = "<group>"; };
+		7C0ED45725DE8DE00080C536 /* LazyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazyView.swift; sourceTree = "<group>"; };
 		8D81FF03DE71F18914EF6337 /* Pods-SpectoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpectoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpectoTests/Pods-SpectoTests.release.xcconfig"; sourceTree = "<group>"; };
 		99440A36E98FEF3CFEC3F44C /* Pods-SpectoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpectoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpectoTests/Pods-SpectoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E65969F11E4E9586C6E877A6 /* Pods-SpectoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpectoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpectoUITests/Pods-SpectoUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 		0FE7204A25DDAD2200CB6B06 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				7C0ED45725DE8DE00080C536 /* LazyView.swift */,
 				0FE7206025DDAF1800CB6B06 /* Views */,
 				0FE7204C25DDAD3700CB6B06 /* Gallery */,
 				0FE7204B25DDAD2900CB6B06 /* Record */,
@@ -454,17 +457,16 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Specto/Pods-Specto-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Reductio/Reductio.framework",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Specto/Pods-Specto-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reductio.framework",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Specto/Pods-Specto-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Specto/Pods-Specto-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Specto/Pods-Specto-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DB7E499E153FDA9235172BB8 /* [CP] Check Pods Manifest.lock */ = {
@@ -508,6 +510,7 @@
 				0FE7203F25DDAC8400CB6B06 /* Date+extensions.swift in Sources */,
 				0FE7203A25DDAC6800CB6B06 /* RecordingSession.swift in Sources */,
 				0FE7201325DDAB8100CB6B06 /* Leaker.swift in Sources */,
+				7C0ED45825DE8DE00080C536 /* LazyView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -667,7 +670,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Specto/Preview Content\"";
-				DEVELOPMENT_TEAM = K4XKQ535KF;
+				DEVELOPMENT_TEAM = QCM3Q3E382;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Specto/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -690,7 +693,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Specto/Preview Content\"";
-				DEVELOPMENT_TEAM = K4XKQ535KF;
+				DEVELOPMENT_TEAM = QCM3Q3E382;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Specto/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;

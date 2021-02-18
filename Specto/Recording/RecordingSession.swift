@@ -16,7 +16,7 @@ enum RecordingSessionError: Error {
 
 class RecordingSession: Scripter, Leaker {
     
-    var delegate: FFT?
+    var delegate: (FFT & Scripter)?
     
     private let recordingURL: URL
 
@@ -51,6 +51,7 @@ class RecordingSession: Scripter, Leaker {
 
     func handoff(text: String) {
         fullTranscriptionText = text
+        self.delegate?.handoff(text: text)
     }
 
     func startSession() throws {
