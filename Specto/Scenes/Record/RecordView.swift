@@ -10,21 +10,31 @@ import Speech
 
 struct RecordView: View {
 
-    private var viewModel: RecordViewModel?
+    @ObservedObject var viewModel: RecordViewModel
 
     init() {
+        
+        viewModel = RecordViewModel()
         if SFSpeechRecognizer.authorizationStatus() != .authorized {
             grantPermissions()
         }
 
-        viewModel = RecordViewModel()
-        viewModel?.startSession()
+        viewModel.startSession()
+        
     }
 
     var body: some View {
         Text("Record View")
             .padding()
         
+        //if let p = viewModel.amplitudes {
+        AudioVisualizer(amplitudes:  viewModel.amplitudes)
+        //}
+        Button("start recording") {
+        
+            
+        }
+
         // We can use viewModel.amplitudes to render AudioVisualizer view here
     }
     
