@@ -23,7 +23,7 @@ class RecordingSession: Scripter, Leaker {
     private let carl: Carl
     private let charles: Charles
     
-    private let fftLimit = 20
+    private let fftLimit = 50
     private let pcmBuffer = 1024
     private let leakBus = 0
     

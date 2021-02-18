@@ -16,6 +16,7 @@ class RecordViewModel: ObservableObject, FFT {
     init() {
         do {
             try session = RecordingSession()
+            session?.delegate = self
         } catch {}
     }
 
