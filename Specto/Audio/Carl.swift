@@ -36,7 +36,7 @@ class Carl {
     private var fftTap: FFTTap!
 
     private let limit: Int
-    private var amplitudes = Array(repeating: Array(repeating: 0.1, count: 20), count: 50)
+    private var amplitudes = Array(repeating: Array(repeating: 0.9, count: 20), count: 50)
 
     init(limit: Int, pcmBuffer: Int, leakBus: Int, sessionFile: AVAudioFile) throws {
         self.pcmBuffer = pcmBuffer
@@ -79,7 +79,7 @@ class Carl {
     }
 
     private func applyFFT(data: [Float]) {
-        let temp: [Double] = Array(repeating: 0.0, count: 20)
+        let temp: [Double] = Array(repeating: 0.9, count: 20)
 
         amplitudes.append(temp)
         if amplitudes.count > limit {
