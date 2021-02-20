@@ -19,11 +19,6 @@ class RecordViewModel: ObservableObject, FFT, Scripter {
     func setImage(_ image: UIImage) {
         
         self.image = image
-        
-        if let data = image.pngData() {
-            let filename = getDocumentsDirectory().appendingPathComponent("copy.png")
-            try? data.write(to: filename)
-        }
     }
 
     private var session: RecordingSession?
@@ -42,7 +37,7 @@ class RecordViewModel: ObservableObject, FFT, Scripter {
     }
     
     func stopSession() {
-        session?.stopSession()
+        session?.stopSession(with: self.image)
     }
 
     func handoff(amplitudes: [[Double]]) {

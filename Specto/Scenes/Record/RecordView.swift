@@ -47,8 +47,9 @@ struct RecordView: View {
                     withAnimation(.easeOut(duration: 0.2)){
                         
                         if viewModel.recording {
-                            viewModel.stopSession()
                             viewModel.setImage(visualizer.asImage(size: CGSize(width: 350, height: 350)))
+                            viewModel.stopSession()
+                            
                         } else {
                             viewModel.startSession()
                         }

@@ -19,6 +19,7 @@ class RecordingSession: Scripter, Leaker {
     var delegate: (FFT & Scripter)?
     
     private let recordingURL: URL
+    private let imageURL: URL
 
     private let carl: Carl
     private let charles: Charles
@@ -32,7 +33,10 @@ class RecordingSession: Scripter, Leaker {
     private var fullTranscriptionText: String = ""
     
     init() throws {
-        recordingURL = RecordingInteractor.generateFileURL()
+        
+        let urls = RecordingInteractor.generateFileURLs()
+        recordingURL = urls.audio
+        imageURL = urls.image
 
         if let audioFile = RecordingSession.createRecordingFile(fileURL: recordingURL) {
             carl = try Carl(limit: fftHistoryLimit,
@@ -65,15 +69,22 @@ class RecordingSession: Scripter, Leaker {
         try charles.start()
     }
     
-    func stopSession() {
+    func stopSession(with image: UIImage) {
         carl.stop()
         charles.stop()
+        
+        if let data = image.pngData() {
+    
+            try? data.write(to: imageURL)
+        }
         
         Reductio.keywords(from: fullTranscriptionText, count: keywordsCount) { words in
             let context = PersistenceController.init().container.viewContext
             let result = RecordingInteractor(context).create(createdAt: Date().timeMilisUTC,
                                                              keywords: words.joined(separator: keywordsSeparator),
-                                                             filePath: recordingURL.absoluteString)
+                                                             audioPath: recordingURL.absoluteString,
+                                                             imagePath: imageURL.absoluteString,
+                                                             text: fullTranscriptionText)
             if !result {
                 print("Could not save session with path: \(recordingURL.absoluteString)")
             }

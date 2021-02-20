@@ -27,6 +27,7 @@ struct GalleryItem: Identifiable {
     let id: Int
     let keywords: [String]
     let displayMode: GalleryItemDisplayMode
+    let image: String?
 }
 
 struct GalleryItemView: View {

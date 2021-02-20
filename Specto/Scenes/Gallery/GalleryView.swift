@@ -58,8 +58,8 @@ struct GalleryView: View {
         // Since one of the items is touched, it's display mode should be changed to fixed.
         //   Other ones should change to hidden.
         viewModel.items = viewModel.items.map {
-            $0.id == id ? GalleryItem(id: $0.id, keywords: $0.keywords, displayMode: .activated)
-                        : GalleryItem(id: $0.id, keywords: $0.keywords, displayMode: .hidden)
+            $0.id == id ? GalleryItem(id: $0.id, keywords: $0.keywords, displayMode: .activated, image: $0.image)
+                        : GalleryItem(id: $0.id, keywords: $0.keywords, displayMode: .hidden, image: $0.image)
         }
     }
 
@@ -67,7 +67,7 @@ struct GalleryView: View {
         if viewModel.touchedOne == nil { return }
 
         viewModel.items = viewModel.items.map {
-            GalleryItem(id: $0.id, keywords: $0.keywords, displayMode: .fixed)
+            GalleryItem(id: $0.id, keywords: $0.keywords, displayMode: .fixed, image: $0.image)
         }
 
         viewModel.touchedOne = nil
