@@ -7,46 +7,67 @@
 
 import SwiftUI
 
-/// This DTO object is unnecessary but Xcode kept showing weird errors when wrapping
-///  ForEach view for Recording CoreData objects and since we have little time this approach
-///  is taken. Apparently this thread (https://stackoverflow.com/questions/59061270/swiftui-foreach-of-fetchedresults-gives-the-error-value-of-type-nsmanagedob) addresses
-///  this issues but there's no time to read! Moving on.
-fileprivate struct RecordingDTO: Identifiable {
-    var id: ObjectIdentifier
-    let keywords: [String]
-    let filePath: String
-    let createdAt: Int64
-}
-
 struct GalleryView: View {
 
-    private var viewModel: GalleryViewModel
-    
-    private var recordingsList: [RecordingDTO]
+    // View model controlling GalleryView state.
+    @StateObject var viewModel = GalleryViewModel()
 
-    init() {
-        viewModel = GalleryViewModel()
-        
-        recordingsList = viewModel.recordings.map {
-            RecordingDTO(id: $0.id,
-                         keywords: $0.getKeywords(),
-                         filePath: $0.filePath ?? "",
-                         createdAt: $0.createdAt)
-        }
-    }
-
+    // Our grid consists  of two equal size columns hence the .flexible() modifier.
     private let columns = [
         GridItem(.flexible()),
         GridItem(.flexible())
     ]
 
-    var body: some View {
+    init() {
+        // Disable the default slide animation in navigation views.
+        UINavigationBar.setAnimationsEnabled(false)
+    }
+
+    var content: some View {
         ScrollView {
             LazyVGrid(columns: columns, spacing: 20) {
-                ForEach(recordingsList) { item in
-                    GalleryViewItem(backgroundColor: Color.red, keywords: item.keywords)
+                ForEach(viewModel.items) { item in
+                    GalleryItemView(coverColor: Color.red,
+                                    contentItem: item,
+                                    touchHandler: onItemTouched,
+                                    displayMode: item.displayMode)
                 }
             }
+            .padding(.horizontal)
+        }
+    }
+    
+    var body: some View {
+        NavigationView {
+            content
+                .onDisappear {
+                    if viewModel.touchedOne == nil { return }
+                    
+                    // Same as GalleryTransitionView, we have to change items state when this
+                    //  view disappears and put a little delay for it to not mess with the UI.
+                    //  There should be a better way of course but we couldn't find it.
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                        viewModel.items = viewModel.items.map {
+                            $0.id == viewModel.touchedOne
+                                ? GalleryItem(id: $0.id, keywords: $0.keywords, displayMode: .activated)
+                                : GalleryItem(id: $0.id, keywords: $0.keywords, displayMode: .hidden)
+                        }
+                        // Set this one to nil so it won't clash next time.
+                        viewModel.touchedOne = nil
+                    }
+                }
+        }.hiddenNavigationBarStyle()
+    }
+    
+    func onItemTouched(id: Int) {
+        // Store the id of the touched item.
+        viewModel.touchedOne = id
+        
+        // Since one of the items is touched, it's display mode should be changed to fixed.
+        //   Other ones should change to hidden.
+        viewModel.items = viewModel.items.map {
+            $0.id == id ? GalleryItem(id: $0.id, keywords: $0.keywords, displayMode: .activated)
+                        : GalleryItem(id: $0.id, keywords: $0.keywords, displayMode: .hidden)
         }
     }
 }
