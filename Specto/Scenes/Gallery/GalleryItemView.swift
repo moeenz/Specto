@@ -22,24 +22,26 @@ enum GalleryItemDisplayMode {
     case activated
 }
 
-// TODO: make this class!
 /// Tiny view model for GalleryItemView view below.
-struct GalleryItem: Identifiable, Hashable {
+struct GalleryItem: Identifiable {
     let id: Int
     let keywords: [String]
     let displayMode: GalleryItemDisplayMode
 }
 
 struct GalleryItemView: View {
-
+    
     var coverColor: Color
-
+    
     var contentItem: GalleryItem
-
+    
     var touchHandler: GalleryItemTouched?
-
+    
+    // TODO: DELETE THIS
     /// Display mode changes by the parent to toggle between view states.
     @State var displayMode: GalleryItemDisplayMode
+    
+    
     /// X-coordinate is saved for reporting to transition view since this is the location it will be left off.
     @State private var xPosition: CGFloat = 0
     /// Y-coordinate is saved for reporting to transition view since this is the location it will be left off.
@@ -48,38 +50,34 @@ struct GalleryItemView: View {
     @State private var opacityLevel: Double = 1
     /// In order to programmatically fire navigation links we need this boolean flag to toggled at the right moment.
     @State private var pushNavigationLink: Bool = false
-
+    
     // Configuration values for each item shape.
     private let frameWidth: CGFloat = 100
     private let frameHeight: CGFloat = 100
     private let alignment: Alignment = .center
-
+    
     // Configuration values for animations.
     private let animationLength: Double = 0.5
     private let animation: Animation = .linear(duration: 0.5)
-
+    
     func buildRecordItemView() -> RecordItemView {
         return RecordItemView(frameWidth: frameWidth,
-                                frameHeight: frameHeight,
-                                alignment: alignment)
+                              frameHeight: frameHeight,
+                              alignment: alignment)
     }
-
+    
     var body: some View {
-        switch displayMode {
+        switch contentItem.displayMode {
         case .fixed:
-            Button(
-                action: {
-                    displayMode = .activated
+            buildRecordItemView()
+                .onTapGesture {
                     touchHandler?(contentItem.id)
-                }, label: {
-                    buildRecordItemView()
                 }
-            )
         case .activated:
             NavigationLink(
-                destination: GalleryTransitionView<RecordItemView>(itemOriginX: xPosition,
-                                                   itemOriginY: yPosition,
-                                                   itemView: buildRecordItemView),
+                destination: LazyView(GalleryTransitionView<RecordItemView>(itemOriginX: xPosition,
+                                                                   itemOriginY: yPosition,
+                                                                   itemView: buildRecordItemView)),
                 isActive: $pushNavigationLink,
                 label: {
                     // The GeometryReader should also be framed the same as the underlying
@@ -117,6 +115,9 @@ struct GalleryItemView: View {
         case .exposed:
             buildRecordItemView()
                 .opacity(opacityLevel)
+                .onTapGesture {
+                    touchHandler?(contentItem.id)
+                }
                 .onAppear {
                     withAnimation(animation) {
                         opacityLevel = 1

@@ -27,7 +27,7 @@ struct GalleryTransitionView<Content: View>: View {
     var itemView: Content
 
     /// We use this Environment field to modify presentation status.
-    @Environment(\.presentationMode) private var presentation
+    @Environment(\.presentationMode) var presentation: Binding<PresentationMode>
 
     /// In order to programmatically fire navigation links we need this boolean flag to toggled at the right moment.
     @State private var pushNavigationLink: Bool = false
@@ -63,7 +63,7 @@ struct GalleryTransitionView<Content: View>: View {
                 // We used a NavigationLink here because we need to push onto to the
                 //  navigation stack once the animation is finished.
                 NavigationLink(
-                    destination: PlayView(),
+                    destination: LazyView(PlayView()),
                     isActive: $pushNavigationLink,
                     label: {
                         itemView
@@ -84,7 +84,7 @@ struct GalleryTransitionView<Content: View>: View {
                                         currentY = itemOriginY
                                     }
                                 }
-                                
+
                                 // Once the animation is done we push forward or backward on the navigation
                                 //  stack based on the direction state.
                                 DispatchQueue.main.asyncAfter(deadline: .now() + animationLength) {
@@ -95,11 +95,12 @@ struct GalleryTransitionView<Content: View>: View {
                                         self.presentation.wrappedValue.dismiss()
                                     }
                                 }
-                            }.onDisappear {
+                            }
+                            .onDisappear {
                                 // When GalleryTransitionView disappears we change the direction state.
                                 //  This is a little hacky but we have to put a delay here since changing
                                 //  direction right away will mess with the UI.
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + animationLength + 0.3) {
                                     // TODO: second time disappear
                                     direction = direction == .toCenter ? .backInPlace : .toCenter
                                 }
