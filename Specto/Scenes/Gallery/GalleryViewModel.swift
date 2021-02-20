@@ -8,10 +8,10 @@
 import SwiftUI
 
 class GalleryViewModel: ObservableObject {
-    
+
     @Published var items: [GalleryItem] = []
-    
-    @State var touchedOne: Int? = nil
+
+    @Published var touchedOne: Int? = nil
 
     init() {
 
