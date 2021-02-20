@@ -30,18 +30,15 @@ struct GalleryItem: Identifiable {
 }
 
 struct GalleryItemView: View {
-    
+
+    var navDismissHandler: NavDismissHandler?
+
     var coverColor: Color
-    
+
     var contentItem: GalleryItem
-    
+
     var touchHandler: GalleryItemTouched?
-    
-    // TODO: DELETE THIS
-    /// Display mode changes by the parent to toggle between view states.
-    @State var displayMode: GalleryItemDisplayMode
-    
-    
+
     /// X-coordinate is saved for reporting to transition view since this is the location it will be left off.
     @State private var xPosition: CGFloat = 0
     /// Y-coordinate is saved for reporting to transition view since this is the location it will be left off.
@@ -50,16 +47,27 @@ struct GalleryItemView: View {
     @State private var opacityLevel: Double = 1
     /// In order to programmatically fire navigation links we need this boolean flag to toggled at the right moment.
     @State private var pushNavigationLink: Bool = false
-    
+
     // Configuration values for each item shape.
     private let frameWidth: CGFloat = 100
     private let frameHeight: CGFloat = 100
     private let alignment: Alignment = .center
-    
+
     // Configuration values for animations.
     private let animationLength: Double = 0.5
     private let animation: Animation = .linear(duration: 0.5)
-    
+
+    init(coverColor: Color,
+         contentItem: GalleryItem,
+         touchHandler: GalleryItemTouched?,
+         navDismissHandler: NavDismissHandler? = nil) {
+
+        self.coverColor = coverColor
+        self.contentItem = contentItem
+        self.touchHandler = touchHandler
+        self.navDismissHandler = navDismissHandler
+    }
+
     func buildRecordItemView() -> RecordItemView {
         return RecordItemView(frameWidth: frameWidth,
                               frameHeight: frameHeight,
@@ -75,9 +83,10 @@ struct GalleryItemView: View {
                 }
         case .activated:
             NavigationLink(
-                destination: LazyView(GalleryTransitionView<RecordItemView>(itemOriginX: xPosition,
-                                                                   itemOriginY: yPosition,
-                                                                   itemView: buildRecordItemView)),
+                destination: GalleryTransitionView<RecordItemView>(itemOriginX: xPosition,
+                                                                            itemOriginY: yPosition,
+                                                                            itemView: buildRecordItemView,
+                                                                            navDismissHandler: onNavDismiss),
                 isActive: $pushNavigationLink,
                 label: {
                     // The GeometryReader should also be framed the same as the underlying
@@ -90,10 +99,10 @@ struct GalleryItemView: View {
                                 // We're getting the global frame because this view will be drawn in the
                                 //  GalleryTransitionView again and they should overlap to avoid glitches.
                                 let frame = proxy.frame(in: .global)
-                                
+
                                 xPosition = frame.origin.x
                                 yPosition = frame.origin.y - frame.height / 2
-                                
+
                                 // We push to GalleryTransitionView after the hiding animation is complete.
                                 //  This approach is taken since we couldn't find a completion handler like
                                 //  the one in UIKit animations.
@@ -112,6 +121,8 @@ struct GalleryItemView: View {
                         opacityLevel = 0
                     }
                 }
+        // For some weird reason the animation closure on this mode won't execute correctly!
+        //  Little time to investigate so we'll just ignore it for now.
         case .exposed:
             buildRecordItemView()
                 .opacity(opacityLevel)
@@ -124,5 +135,9 @@ struct GalleryItemView: View {
                     }
                 }
         }
+    }
+    
+    func onNavDismiss() {
+        navDismissHandler?()
     }
 }

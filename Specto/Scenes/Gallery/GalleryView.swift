@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+typealias NavDismissHandler = () -> Void
+
 struct GalleryView: View {
 
     // View model controlling GalleryView state.
@@ -30,7 +32,7 @@ struct GalleryView: View {
                     GalleryItemView(coverColor: Color.red,
                                     contentItem: item,
                                     touchHandler: onItemTouched,
-                                    displayMode: item.displayMode)
+                                    navDismissHandler: onNavDismiss)
                 }
             }
             .padding(.horizontal)
@@ -41,28 +43,11 @@ struct GalleryView: View {
         NavigationView {
             ZStack {
                 content
-                    .onDisappear {
-                        if viewModel.touchedOne == nil { return }
-
-                        // Same as GalleryTransitionView, we have to change items state when this
-                        //  view disappears and put a little delay for it to not mess with the UI.
-                        //  There should be a better way of course but we couldn't find it.
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                            viewModel.items = viewModel.items.map {
-                                $0.id == viewModel.touchedOne
-                                    ? GalleryItem(id: $0.id, keywords: $0.keywords, displayMode: .fixed)
-                                    : GalleryItem(id: $0.id, keywords: $0.keywords, displayMode: .exposed)
-                            }
-                            // Set this one to nil so it won't clash next time.
-                            viewModel.touchedOne = nil
-                        }
-                    }
                 VStack {
                     Spacer()
                     Text("Gallery View")
                 }
             }
-            
         }.hiddenNavigationBarStyle()
     }
 
@@ -76,5 +61,15 @@ struct GalleryView: View {
             $0.id == id ? GalleryItem(id: $0.id, keywords: $0.keywords, displayMode: .activated)
                         : GalleryItem(id: $0.id, keywords: $0.keywords, displayMode: .hidden)
         }
+    }
+
+    func onNavDismiss() {
+        if viewModel.touchedOne == nil { return }
+
+        viewModel.items = viewModel.items.map {
+            GalleryItem(id: $0.id, keywords: $0.keywords, displayMode: .fixed)
+        }
+
+        viewModel.touchedOne = nil
     }
 }
