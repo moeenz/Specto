@@ -19,6 +19,8 @@ fileprivate enum TransitionDirection {
 ///   item back to its original place.
 struct GalleryTransitionView<Content: View>: View {
 
+    var navDismissHandler: NavDismissHandler?
+
     /// This value holds the original X-coordinate of the item in global frame.
     var itemOriginX: CGFloat
     /// This value holds the original Y-coordinate of the item in global frame.
@@ -27,7 +29,7 @@ struct GalleryTransitionView<Content: View>: View {
     var itemView: Content
 
     /// We use this Environment field to modify presentation status.
-    @Environment(\.presentationMode) var presentation: Binding<PresentationMode>
+    @Environment(\.presentationMode) var presentation
 
     /// In order to programmatically fire navigation links we need this boolean flag to toggled at the right moment.
     @State private var pushNavigationLink: Bool = false
@@ -46,10 +48,15 @@ struct GalleryTransitionView<Content: View>: View {
     private let animationLength: Double = 0.75
     private let animation: Animation = .linear(duration: 0.75)
 
-    init(itemOriginX: CGFloat, itemOriginY: CGFloat, @ViewBuilder itemView: () -> Content) {
+    init(itemOriginX: CGFloat,
+         itemOriginY: CGFloat,
+         @ViewBuilder itemView: () -> Content,
+         navDismissHandler: NavDismissHandler? = nil) {
+
         self.itemOriginX = itemOriginX
         self.itemOriginY = itemOriginY
         self.itemView = itemView()
+        self.navDismissHandler = navDismissHandler
         
         self._direction = State(initialValue: .toCenter)
         self._currentX = State(initialValue: itemOriginX)
@@ -63,7 +70,7 @@ struct GalleryTransitionView<Content: View>: View {
                 // We used a NavigationLink here because we need to push onto to the
                 //  navigation stack once the animation is finished.
                 NavigationLink(
-                    destination: LazyView(PlayView()),
+                    destination: LazyView(PlayView(navDismissHandler: onNavDismiss)),
                     isActive: $pushNavigationLink,
                     label: {
                         itemView
@@ -88,21 +95,9 @@ struct GalleryTransitionView<Content: View>: View {
                                 // Once the animation is done we push forward or backward on the navigation
                                 //  stack based on the direction state.
                                 DispatchQueue.main.asyncAfter(deadline: .now() + animationLength) {
-                                    switch direction {
-                                    case .toCenter:
+                                    if direction == .toCenter {
                                         pushNavigationLink = true
-                                    case .backInPlace:
-                                        self.presentation.wrappedValue.dismiss()
                                     }
-                                }
-                            }
-                            .onDisappear {
-                                // When GalleryTransitionView disappears we change the direction state.
-                                //  This is a little hacky but we have to put a delay here since changing
-                                //  direction right away will mess with the UI.
-                                DispatchQueue.main.asyncAfter(deadline: .now() + animationLength + 0.3) {
-                                    // TODO: second time disappear
-                                    direction = direction == .toCenter ? .backInPlace : .toCenter
                                 }
                             }
                     }
@@ -114,5 +109,13 @@ struct GalleryTransitionView<Content: View>: View {
         .frame(maxHeight: .infinity, alignment: currentAlignment)  // Filling the entire screen height.
         .padding(EdgeInsets(top: currentY, leading: 0, bottom: 0, trailing: 0))
         .hiddenNavigationBarStyle()
+    }
+    
+    func onNavDismiss() {
+        pushNavigationLink = false
+        direction = .backInPlace
+        DispatchQueue.main.asyncAfter(deadline: .now() + animationLength) {
+            navDismissHandler?()
+        }
     }
 }

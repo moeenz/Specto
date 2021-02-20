@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct PlayView: View {
+    
+    var navDismissHandler: NavDismissHandler?
 
     /// We use this Environment field to modify presentation status.
     @Environment(\.presentationMode) var presentation
@@ -25,6 +27,10 @@ struct PlayView: View {
     // Configuration values for animations.
     private let animationLength: Double = 0.75
     private let animation: Animation = .linear(duration: 0.5)
+
+    init(navDismissHandler: NavDismissHandler? = nil) {
+        self.navDismissHandler = navDismissHandler
+    }
 
     var body: some View {
         ZStack {
@@ -46,7 +52,8 @@ struct PlayView: View {
                     }
 
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.1) {
-                        self.presentation.wrappedValue.dismiss()
+                        navDismissHandler?()
+                        presentation.wrappedValue.dismiss()
                     }
                 }
             }
