@@ -6,11 +6,24 @@
 //
 
 import Foundation
+import UIKit
 
 class RecordViewModel: ObservableObject, FFT, Scripter {
     
     @Published var amplitudes = [[Double]]()
     @Published var text: String = ""
+    
+    private var image = UIImage()
+    
+    func setImage(_ image: UIImage) {
+        
+        self.image = image
+        
+        if let data = image.pngData() {
+            let filename = getDocumentsDirectory().appendingPathComponent("copy.png")
+            try? data.write(to: filename)
+        }
+    }
 
     private var session: RecordingSession?
     

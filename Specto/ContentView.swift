@@ -13,7 +13,7 @@ struct ContentView: View {
         
         NavigationView {
             
-            GalleryView()
+            RecordView()
         }
     }
 }
