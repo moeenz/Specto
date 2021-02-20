@@ -28,3 +28,12 @@ It's necessary to call `RecordingSession.stopSession()` to persist the session.
 ```
 
 This method persists audio file and the processed context using CoreData model objects.
+
+## SwiftUI Covered APIs
+
+Description on what APIs we have used in SwiftUI on each view. Could be useful.
+
+## License
+
+GNU General Public License v3.0 or later.
+See [COPYING](./COPYING) to see the full text.
