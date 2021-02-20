@@ -29,7 +29,7 @@ struct RecordView: View {
             Spacer()
             
         
-            Text(viewModel.text).padding()
+            Text(viewModel.text).truncationMode(.head).frame(height: 30).padding(100)
             HStack(spacing: 100) {
                 
                 Button(action: {
