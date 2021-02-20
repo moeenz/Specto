@@ -11,14 +11,12 @@ struct AudioVisualizer: View {
     // This view receives the amplitudes and renders the spectogram
     
     var amplitudes :  [[Double]]
-    
     var animation: Animation {
-        Animation.linear(duration: 5.0)
+        Animation.linear(duration: 7.5)
             .repeatForever(autoreverses: false)
     }
     var recording: Bool
-    
-    @State private var rotateFactor = Angle(radians: 0)
+    @State private var rotateFactor = Angle(radians: +2 * .pi)
     
     
     var body: some View {
@@ -26,20 +24,18 @@ struct AudioVisualizer: View {
             ZStack(alignment: .center){
                 Circle().foregroundColor(.black).frame(width: geometry.size.width, height: geometry.size.height)
                 
-                ForEach(0 ..< self.amplitudes.count, id: \.self) { number in
+                ForEach(0 ..< 33, id: \.self) { number in
                     
-                    vinylView(center: CGPoint(x: geometry.size.width / 2, y:geometry.size.height / 2),
-                              radius: geometry.size.width / 2,
-                              insideRadius: geometry.size.width / 4.4,
-                              amplitudes: self.amplitudes[number],
-                              sector: CGFloat(number),
-                              sectorCount: 50.0)
+                    vinylView(radius: (geometry.size.width / 2 ) - 4,
+                              insideRadius: 100,
+                              amplitudes: self.amplitudes,
+                              circleNumber: CGFloat(number),
+                              circleCount: 33)
                 }
                 
-                Image("disc-reflection").resizable().frame(width: 320, height: 320).opacity(0.4)
+                Image("reflection").resizable().opacity(0.5)
                 Image("center")
-                    
-                    .rotationEffect(recording ? Angle(radians: +2 * .pi) : Angle(radians: 0))
+                    .rotationEffect(recording ? Angle(radians: 0) : Angle(radians: +2 * .pi))
                     .animation(animation)
                 
             }.drawingGroup()
@@ -49,42 +45,42 @@ struct AudioVisualizer: View {
 
 struct vinylView: View {
     
-    let center: CGPoint
     let radius: CGFloat
-    let amplitudes: [Double]
-    let angleStep: CGFloat
-    let sector: CGFloat
-    let sectorCount: CGFloat
+    let amplitudes: [[Double]]
+    let circleNumber: CGFloat
+    let circleCount: CGFloat
     let insideRadius: CGFloat
     
-    init(center: CGPoint, radius: CGFloat, insideRadius: CGFloat, amplitudes: [Double], sector: CGFloat, sectorCount: CGFloat) {
+    
+    func t(amplitudes: [[Double]], _ n: Int) -> [Color] {
         
-        self.center = center
+        var v = [Color]()
+        for i in 0 ..< amplitudes.count {
+            v.append(Color(UIColor(white: CGFloat(amplitudes[i][n]), alpha: 0.6 )))
+        }
+        
+        return v
+    }
+    
+    init(radius: CGFloat, insideRadius: CGFloat, amplitudes: [[Double]], circleNumber: CGFloat, circleCount: CGFloat) {
+        
         self.radius = radius
         self.amplitudes = amplitudes
-        self.angleStep = (.pi * 2) / sectorCount
         self.insideRadius = insideRadius
-        self.sectorCount = sectorCount
-        self.sector = sector
+        self.circleCount = circleCount
+        self.circleNumber = circleNumber
     }
+    
+
     var body: some View {
-        
-        let step = (radius - insideRadius) / CGFloat(self.amplitudes.count)
-        
-        ForEach(0 ..< self.amplitudes.count) { counter in
-            
-            Path { path in
-                
-                let floatCounter = CGFloat(counter)
-                path.move(to: CGPoint(x: center.x + ((floatCounter * step + insideRadius) * cos(angleStep * sector)),
-                                      y: center.y - ((floatCounter * step + insideRadius) * sin(angleStep * sector))))
-                
-                path.addLine(to: CGPoint(x: center.x + ((floatCounter * step + insideRadius) * cos(angleStep * (sector + 1.0))),
-                                         y: center.y - ((floatCounter * step + insideRadius) * sin(angleStep * (sector + 1.0)))))
-                
-            }.stroke(lineWidth: 0.8)
-            .fill(Color(UIColor(white: 1 - CGFloat(amplitudes[counter]), alpha: 0.6 )))
-            
-        }
+
+        let gradient = AngularGradient(gradient: Gradient(colors:self.t(amplitudes: amplitudes, Int(circleNumber))), center: .center, angle: .zero)
+
+        let size = (insideRadius + (radius - insideRadius) * (circleNumber / circleCount)) * 2
+        Circle()
+            .stroke(gradient, lineWidth: 1.0)
+            .frame(width: size, height: size)
     }
 }
+
+

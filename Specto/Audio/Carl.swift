@@ -30,19 +30,21 @@ class Carl {
     private let sessionFile: AVAudioFile
 
     private let SAMPLING_RATE: double_t = 44100
-    private let FFT_SIZE = 512
+    private let FFT_SIZE = 1024
+    private let FFT_ARRAY_SIZE = 33
     private let pcmBuffer: Int
     private let leakBus: Int
     private var fftTap: FFTTap!
 
     private let limit: Int
-    private var amplitudes = Array(repeating: Array(repeating: 0.9, count: 20), count: 50)
+    private var amplitudes: [[Double]]
 
     init(limit: Int, pcmBuffer: Int, leakBus: Int, sessionFile: AVAudioFile) throws {
         self.pcmBuffer = pcmBuffer
         self.leakBus = leakBus
         self.limit = limit
         self.sessionFile = sessionFile
+        amplitudes = Array(repeating: Array(repeating: 0.0, count: FFT_ARRAY_SIZE), count: limit)
 
         Settings.bufferLength = .medium
         try Settings.setSession(category: .playAndRecord, with: .defaultToSpeaker)
@@ -79,7 +81,7 @@ class Carl {
     }
 
     private func applyFFT(data: [Float]) {
-        let temp: [Double] = Array(repeating: 0.9, count: 20)
+        let temp: [Double] = Array(repeating: 0.0, count: FFT_ARRAY_SIZE)
 
         amplitudes.append(temp)
         if amplitudes.count > limit {
@@ -98,7 +100,7 @@ class Carl {
             let scaledAmplitude = (amplitude + 250) / 229.80
             
             if i / 2 < temp.count {
-                var mappedAmplitude = self.scale(n: scaledAmplitude, start1: 0.6, stop1: 0.9, start2: 0.0, stop2: 1.0)
+                var mappedAmplitude = self.scale(n: scaledAmplitude, start1: 0.3, stop1: 0.9, start2: 0.0, stop2: 1.0)
 
                 if mappedAmplitude < 0 {
                     mappedAmplitude = 0

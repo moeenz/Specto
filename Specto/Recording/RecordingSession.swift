@@ -23,7 +23,7 @@ class RecordingSession: Scripter, Leaker {
     private let carl: Carl
     private let charles: Charles
     
-    private let fftLimit = 50
+    private let fftHistoryLimit = 75
     private let pcmBuffer = 1024
     private let leakBus = 0
     
@@ -35,7 +35,7 @@ class RecordingSession: Scripter, Leaker {
         recordingURL = RecordingInteractor.generateFileURL()
 
         if let audioFile = RecordingSession.createRecordingFile(fileURL: recordingURL) {
-            carl = try Carl(limit: fftLimit,
+            carl = try Carl(limit: fftHistoryLimit,
                         pcmBuffer: pcmBuffer,
                         leakBus: leakBus,
                         sessionFile: audioFile)
