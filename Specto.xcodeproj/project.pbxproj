@@ -15,6 +15,10 @@
 		0FBA25A325DDA6D60001D9D3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0FBA25A225DDA6D60001D9D3 /* Preview Assets.xcassets */; };
 		0FBA25AE25DDA6D60001D9D3 /* SpectoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBA25AD25DDA6D60001D9D3 /* SpectoTests.swift */; };
 		0FBA25B925DDA6D60001D9D3 /* SpectoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBA25B825DDA6D60001D9D3 /* SpectoUITests.swift */; };
+		0FBF84BD25E0D10A002A600E /* View+modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBF84BC25E0D10A002A600E /* View+modifiers.swift */; };
+		0FBF84C225E0D12A002A600E /* View+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBF84C125E0D12A002A600E /* View+extensions.swift */; };
+		0FBF84C725E0D1CD002A600E /* GalleryTransitionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBF84C625E0D1CD002A600E /* GalleryTransitionView.swift */; };
+		0FBF84D625E0F4BB002A600E /* RecordItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBF84D525E0F4BB002A600E /* RecordItemView.swift */; };
 		0FE7200125DDAA8F00CB6B06 /* AudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0FE7200025DDAA8F00CB6B06 /* AudioKit */; };
 		0FE7200B25DDAB5A00CB6B06 /* Carl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE7200A25DDAB5A00CB6B06 /* Carl.swift */; };
 		0FE7201325DDAB8100CB6B06 /* Leaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE7201225DDAB8100CB6B06 /* Leaker.swift */; };
@@ -32,7 +36,7 @@
 		0FE7206225DDAF3600CB6B06 /* AudioVisualizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE7206125DDAF3600CB6B06 /* AudioVisualizer.swift */; };
 		0FE7206825DE708200CB6B06 /* PlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE7206725DE708200CB6B06 /* PlayView.swift */; };
 		0FE7208025DEAAF000CB6B06 /* GalleryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE7207F25DEAAF000CB6B06 /* GalleryViewModel.swift */; };
-		0FE7208525DEAB9D00CB6B06 /* GalleryViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE7208425DEAB9D00CB6B06 /* GalleryViewItem.swift */; };
+		0FE7208525DEAB9D00CB6B06 /* GalleryItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE7208425DEAB9D00CB6B06 /* GalleryItemView.swift */; };
 		1930B5208F739DDC920FE3F2 /* Pods_SpectoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28DAA1457C7CAF8E40B247CD /* Pods_SpectoUITests.framework */; };
 		7C0ED45825DE8DE00080C536 /* LazyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0ED45725DE8DE00080C536 /* LazyView.swift */; };
 		9EB92A05ECE04D3610C8FC30 /* Pods_Specto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15B5E83D6B8923E979A2E5C9 /* Pods_Specto.framework */; };
@@ -71,6 +75,10 @@
 		0FBA25B425DDA6D60001D9D3 /* SpectoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpectoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FBA25B825DDA6D60001D9D3 /* SpectoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpectoUITests.swift; sourceTree = "<group>"; };
 		0FBA25BA25DDA6D60001D9D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0FBF84BC25E0D10A002A600E /* View+modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+modifiers.swift"; sourceTree = "<group>"; };
+		0FBF84C125E0D12A002A600E /* View+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+extensions.swift"; sourceTree = "<group>"; };
+		0FBF84C625E0D1CD002A600E /* GalleryTransitionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryTransitionView.swift; sourceTree = "<group>"; };
+		0FBF84D525E0F4BB002A600E /* RecordItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordItemView.swift; sourceTree = "<group>"; };
 		0FE7200A25DDAB5A00CB6B06 /* Carl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Carl.swift; sourceTree = "<group>"; };
 		0FE7201225DDAB8100CB6B06 /* Leaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leaker.swift; sourceTree = "<group>"; };
 		0FE7201A25DDAB9300CB6B06 /* FFT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFT.swift; sourceTree = "<group>"; };
@@ -87,7 +95,7 @@
 		0FE7206125DDAF3600CB6B06 /* AudioVisualizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioVisualizer.swift; sourceTree = "<group>"; };
 		0FE7206725DE708200CB6B06 /* PlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayView.swift; sourceTree = "<group>"; };
 		0FE7207F25DEAAF000CB6B06 /* GalleryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewModel.swift; sourceTree = "<group>"; };
-		0FE7208425DEAB9D00CB6B06 /* GalleryViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewItem.swift; sourceTree = "<group>"; };
+		0FE7208425DEAB9D00CB6B06 /* GalleryItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryItemView.swift; sourceTree = "<group>"; };
 		15B5E83D6B8923E979A2E5C9 /* Pods_Specto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Specto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E0092205442F102ED933461 /* Pods_SpectoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpectoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		28DAA1457C7CAF8E40B247CD /* Pods_SpectoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpectoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -228,6 +236,8 @@
 			isa = PBXGroup;
 			children = (
 				0FE7203E25DDAC8400CB6B06 /* Date+extensions.swift */,
+				0FBF84BC25E0D10A002A600E /* View+modifiers.swift */,
+				0FBF84C125E0D12A002A600E /* View+extensions.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -236,7 +246,6 @@
 			isa = PBXGroup;
 			children = (
 				0FE7206625DE706D00CB6B06 /* Play */,
-				7C0ED45725DE8DE00080C536 /* LazyView.swift */,
 				0FE7206025DDAF1800CB6B06 /* Views */,
 				0FE7204C25DDAD3700CB6B06 /* Gallery */,
 				0FE7204B25DDAD2900CB6B06 /* Record */,
@@ -259,7 +268,8 @@
 			children = (
 				0FE7205A25DDAE1E00CB6B06 /* GalleryView.swift */,
 				0FE7207F25DEAAF000CB6B06 /* GalleryViewModel.swift */,
-				0FE7208425DEAB9D00CB6B06 /* GalleryViewItem.swift */,
+				0FE7208425DEAB9D00CB6B06 /* GalleryItemView.swift */,
+				0FBF84C625E0D1CD002A600E /* GalleryTransitionView.swift */,
 			);
 			path = Gallery;
 			sourceTree = "<group>";
@@ -267,6 +277,8 @@
 		0FE7206025DDAF1800CB6B06 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0FBF84D525E0F4BB002A600E /* RecordItemView.swift */,
+				7C0ED45725DE8DE00080C536 /* LazyView.swift */,
 				0FE7206125DDAF3600CB6B06 /* AudioVisualizer.swift */,
 			);
 			path = Views;
@@ -480,16 +492,17 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Specto/Pods-Specto-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Specto/Pods-Specto-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Reductio/Reductio.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Specto/Pods-Specto-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reductio.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Specto/Pods-Specto-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Specto/Pods-Specto-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DB7E499E153FDA9235172BB8 /* [CP] Check Pods Manifest.lock */ = {
@@ -523,12 +536,15 @@
 				0FBA259E25DDA6D50001D9D3 /* ContentView.swift in Sources */,
 				0FE7202525DDABC100CB6B06 /* Scripter.swift in Sources */,
 				0FE7206825DE708200CB6B06 /* PlayView.swift in Sources */,
+				0FBF84D625E0F4BB002A600E /* RecordItemView.swift in Sources */,
+				0FBF84C725E0D1CD002A600E /* GalleryTransitionView.swift in Sources */,
 				0FE7205625DDADE600CB6B06 /* RecordView.swift in Sources */,
-				0FE7208525DEAB9D00CB6B06 /* GalleryViewItem.swift in Sources */,
+				0FE7208525DEAB9D00CB6B06 /* GalleryItemView.swift in Sources */,
 				0FE7205B25DDAE1E00CB6B06 /* GalleryView.swift in Sources */,
 				0FE7200B25DDAB5A00CB6B06 /* Carl.swift in Sources */,
 				0FBA259C25DDA6D50001D9D3 /* SpectoApp.swift in Sources */,
 				0FE7208025DEAAF000CB6B06 /* GalleryViewModel.swift in Sources */,
+				0FBF84BD25E0D10A002A600E /* View+modifiers.swift in Sources */,
 				0FE7201B25DDAB9300CB6B06 /* FFT.swift in Sources */,
 				0FE7203525DDAC4900CB6B06 /* RecordingInteractor.swift in Sources */,
 				0F87065825DEB3B400C31CA7 /* Recording+extension.swift in Sources */,
@@ -538,6 +554,7 @@
 				0FE7203F25DDAC8400CB6B06 /* Date+extensions.swift in Sources */,
 				0FE7203A25DDAC6800CB6B06 /* RecordingSession.swift in Sources */,
 				0FE7201325DDAB8100CB6B06 /* Leaker.swift in Sources */,
+				0FBF84C225E0D12A002A600E /* View+extensions.swift in Sources */,
 				7C0ED45825DE8DE00080C536 /* LazyView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -698,7 +715,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Specto/Preview Content\"";
-				DEVELOPMENT_TEAM = QCM3Q3E382;
+				DEVELOPMENT_TEAM = K4XKQ535KF;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Specto/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -721,7 +738,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Specto/Preview Content\"";
-				DEVELOPMENT_TEAM = QCM3Q3E382;
+				DEVELOPMENT_TEAM = K4XKQ535KF;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Specto/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
