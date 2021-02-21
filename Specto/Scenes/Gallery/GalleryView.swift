@@ -34,7 +34,9 @@ struct GalleryView: View {
     var content: some View {
         ZStack {
             if let item = viewModel.touchedOne {
-                RecordItemView(image: item.image, keywords: item.keywords)
+                RecordItemView(image: item.image,
+                               keywords: item.keywords,
+                               displayMode: .fixed)
                     .onTapGesture {
                         withAnimation(.spring()) {
                             viewModel.touchedOne = nil
@@ -47,7 +49,8 @@ struct GalleryView: View {
                     LazyVGrid(columns: columns, spacing: 50) {
                         ForEach(viewModel.items) { item in
                             RecordItemView(image: item.image,
-                                           keywords: item.keywords)
+                                           keywords: item.keywords,
+                                           displayMode: .fixed)
                                 .onTapGesture {
                                     withAnimation(.spring()) {
                                         viewModel.touchedOne = item
@@ -70,7 +73,7 @@ struct GalleryView: View {
             ZStack {
                 if let touchedOne = viewModel.touchedOne {
                     NavigationLink(
-                        destination: PlayView(item: touchedOne),
+                        destination: PlayView(item: touchedOne, playFinishHandler: onPlayFinished),
                         isActive: $pushLink,
                         label: {
                             EmptyView()

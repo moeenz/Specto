@@ -1,6 +1,12 @@
 import SwiftUI
 import Kingfisher
 
+enum RecordDisplayMode {
+    case fixed
+    case startPlaying
+    case finishPlaying
+}
+
 struct RecordItemView: View {
 
     var image: String?
@@ -9,6 +15,8 @@ struct RecordItemView: View {
     var onPlay = false
     @State private var coverOffset: CGFloat = 0
     @State private var keywordsContainerOffset: CGFloat = 9999
+
+    @State var displayMode: RecordDisplayMode = .fixed
 
     var recordImage: some View {
         ZStack {
@@ -49,31 +57,54 @@ struct RecordItemView: View {
 
     var body: some View {
         ZStack {
-            if onPlay {
+            switch displayMode {
+            case .fixed:
                 recordImage
                 recordCover
-                    .onAppear {
-                        withAnimation(.spring()) {
-                            coverOffset = 9999
-                        }
+            case .startPlaying:
+                recordImage
+                recordCover
+                    .animate {
+                        coverOffset = 9999
                     }
                     .offset(y: coverOffset)
-                
+
                 VStack {
                     Spacer()
                     largeKeywords
-                        .onAppear {
-                            withAnimation(.easeIn) {
-                                keywordsContainerOffset = 50
-                            }
+                        .animate {
+                            keywordsContainerOffset = 150
                         }
                         .offset(y: keywordsContainerOffset)
                 }
-
-            } else {
+            case .finishPlaying:
                 recordImage
                 recordCover
+                    .animate {
+                        coverOffset = 0
+                    }
+                    .offset(y: coverOffset)
+
+                VStack {
+                    Spacer()
+                    largeKeywords
+                        .animate {
+                            keywordsContainerOffset = 9999
+                        }
+                        .offset(y: keywordsContainerOffset)
+                }
             }
         }
     }
 }
+
+extension View {
+    func animate(using animation: Animation = Animation.easeInOut(duration: 1), _ action: @escaping () -> Void) -> some View {
+        onAppear {
+            withAnimation(animation) {
+                action()
+            }
+        }
+    }
+}
+
