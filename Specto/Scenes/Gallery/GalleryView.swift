@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Kingfisher
+import Speech
 
 typealias NavDismissHandler = () -> Void
 
@@ -20,6 +21,8 @@ struct GalleryView: View {
     
     @State private var pushLink = false
     
+    @State private var bottomPaneOffset: CGFloat = 0
+    
     // Our grid consists  of two equal size columns hence the .flexible() modifier.
     private let columns = [
         GridItem(.flexible()),
@@ -29,6 +32,10 @@ struct GalleryView: View {
     init() {
         // Disable the default slide animation in navigation views.
         UINavigationBar.setAnimationsEnabled(false)
+        
+        if SFSpeechRecognizer.authorizationStatus() != .authorized {
+            SFSpeechRecognizer.requestAuthorization {_ in }
+        }
     }
     
     var emptyGallery: some View {
@@ -36,6 +43,8 @@ struct GalleryView: View {
             .font(.system(size: 32, weight: .ultraLight, design: .default))
             .offset(y: -50)
     }
+    
+    
     
     var recordButton: some View {
         NavigationLink(
@@ -57,6 +66,47 @@ struct GalleryView: View {
         )
     }
     
+    var bottomPaneContainer: some View {
+        ZStack {
+            if viewModel.touchedOne != nil {
+                bottomPane
+                    .offset(y: bottomPaneOffset)
+                    .onAppear {
+                        withAnimation {
+                            bottomPaneOffset = 400
+                        }
+                    }
+            } else {
+                bottomPane
+            }
+        }
+    }
+
+    var bottomPane: some View {
+        ZStack {
+            VStack {
+                Spacer()
+                RoundedRectangle(cornerRadius: 30)
+                    .fill(Color(red: 81/255, green: 81/255, blue: 81/255))
+                    .frame(height: 120, alignment: .center)
+                    
+            }
+            .edgesIgnoringSafeArea(.bottom)
+            VStack {
+                Spacer()
+                Rectangle()
+                    .fill(Color(red: 81/255, green: 81/255, blue: 81/255))
+                    .frame(height: 50, alignment: .bottom)
+                    
+            }
+            .edgesIgnoringSafeArea(.bottom)
+            NavigationLink(destination: RecordView()) {
+                RecordButton()
+                    .frame(height: 150, alignment: .bottom)
+            }
+        }.frame(height: 150, alignment: .bottom)
+    }
+
     var galleryItems: some View {
         ZStack {
             if let item = viewModel.touchedOne {
@@ -96,9 +146,10 @@ struct GalleryView: View {
     }
     
     var body: some View {
-    
+
         NavigationView {
             ZStack {
+                Color(red: 26 / 255, green: 26 / 255, blue: 26 / 255).edgesIgnoringSafeArea(.all)
                 if viewModel.isEmpty {
                     emptyGallery
                 } else {
@@ -115,7 +166,7 @@ struct GalleryView: View {
                 }
                 VStack {
                     Spacer()
-                    recordButton
+                    bottomPaneContainer
                 }
             }
         }

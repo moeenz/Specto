@@ -17,8 +17,7 @@ struct AudioVisualizer: View {
     }
     var recording: Bool
     @State private var rotateFactor = Angle(radians: +2 * .pi)
-    
-    
+
     var body: some View {
         GeometryReader { geometry in
             ZStack(alignment: .center){
