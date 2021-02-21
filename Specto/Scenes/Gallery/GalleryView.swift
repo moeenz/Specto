@@ -27,7 +27,7 @@ struct GalleryView: View {
 
     var content: some View {
         ScrollView {
-            LazyVGrid(columns: columns, spacing: 20) {
+            LazyVGrid(columns: columns, spacing: 50) {
                 ForEach(viewModel.items) { item in
                     GalleryItemView(coverColor: Color.red,
                                     contentItem: item,

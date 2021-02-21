@@ -50,8 +50,8 @@ struct GalleryItemView: View {
     @State private var pushNavigationLink: Bool = false
 
     // Configuration values for each item shape.
-    private let frameWidth: CGFloat = 100
-    private let frameHeight: CGFloat = 100
+    private let frameWidth: CGFloat = 150
+    private let frameHeight: CGFloat = 150
     private let alignment: Alignment = .center
 
     // Configuration values for animations.
@@ -69,8 +69,9 @@ struct GalleryItemView: View {
         self.navDismissHandler = navDismissHandler
     }
 
-    func buildRecordItemView() -> RecordItemView {
-        return RecordItemView(frameWidth: frameWidth,
+    func buildRecordItemView(item: GalleryItem) -> RecordItemView {
+        return RecordItemView(item: item,
+                              frameWidth: frameWidth,
                               frameHeight: frameHeight,
                               alignment: alignment)
     }
@@ -78,23 +79,24 @@ struct GalleryItemView: View {
     var body: some View {
         switch contentItem.displayMode {
         case .fixed:
-            buildRecordItemView()
+            buildRecordItemView(item: contentItem)
                 .onTapGesture {
                     touchHandler?(contentItem.id)
                 }
         case .activated:
             NavigationLink(
-                destination: GalleryTransitionView<RecordItemView>(itemOriginX: xPosition,
-                                                                            itemOriginY: yPosition,
-                                                                            itemView: buildRecordItemView,
-                                                                            navDismissHandler: onNavDismiss),
+                destination: RecordView(),
+//                    GalleryTransitionView<RecordItemView>(itemOriginX: xPosition,
+//                                                                            itemOriginY: yPosition,
+//                                                                            itemView: buildRecordItemView,
+//                                                                            navDismissHandler: onNavDismiss),
                 isActive: $pushNavigationLink,
                 label: {
                     // The GeometryReader should also be framed the same as the underlying
                     //  view, otherwise it will mess with its bounds. You can read more about
                     // it here: https://swiftwithmajid.com/2020/11/04/how-to-use-geometryreader-without-breaking-swiftui-layout/
                     GeometryReader { proxy in
-                        buildRecordItemView()
+                        buildRecordItemView(item:  contentItem)
                             .onAppear {
                                 // GeometryReader allows us to get the object position inside a desired frame.
                                 // We're getting the global frame because this view will be drawn in the
@@ -115,7 +117,7 @@ struct GalleryItemView: View {
                 }
             )
         case .hidden:
-            buildRecordItemView()
+            buildRecordItemView(item: contentItem)
                 .opacity(opacityLevel)
                 .onAppear {
                     withAnimation(animation) {
@@ -125,7 +127,7 @@ struct GalleryItemView: View {
         // For some weird reason the animation closure on this mode won't execute correctly!
         //  Little time to investigate so we'll just ignore it for now.
         case .exposed:
-            buildRecordItemView()
+            buildRecordItemView(item: contentItem)
                 .opacity(opacityLevel)
                 .onTapGesture {
                     touchHandler?(contentItem.id)
