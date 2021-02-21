@@ -10,8 +10,7 @@ import SwiftUI
 struct PlayView: View {
 
     var item: GalleryItem
-
-    @State private var isPlaying = true
+    @StateObject var viewModel = PlayViewModel()
     
     var onPlayFinishHandler: (() -> Void)?
 
@@ -22,13 +21,13 @@ struct PlayView: View {
         RecordItemView(
             image: item.image,
             keywords: item.keywords,
-            displayMode: isPlaying ? .startPlaying : .finishPlaying
+            displayMode: viewModel.isPlaying ? .startPlaying : .finishPlaying
         )
     }
 
     var body: some View {
         ZStack {
-            if isPlaying {
+            if viewModel.isPlaying {
                 RecordItemView(
                     image: item.image,
                     keywords: item.keywords,
@@ -38,12 +37,9 @@ struct PlayView: View {
                 )
                 .frame(width: 300, height: 300, alignment: .center)
                 .onAppear {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                        isPlaying = false
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                            onPlayFinishHandler?()
-                        }
-                    }
+                    
+                    viewModel.play(item: item, onPlayFinishHandler: onPlayFinishHandler)
+
                 }
             } else {
                 RecordItemView(
