@@ -2,6 +2,8 @@
 
 Specto is an audio visualizer application using FFT.
 
+**_There are currently minor issues with animations but we're freezing this branch per requested. Check out `main` branch for complete working code and docs. Thanks!_**
+
 ## Setup
 
 This project uses both Cocoapods and Swift package manager to dependency issues. Install Cocoapods dependencies using:
