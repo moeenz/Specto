@@ -13,8 +13,10 @@ struct RecordItemView: View {
     var keywords: [String]
     
     var onPlay = false
-    @State private var coverOffset: CGFloat = 0
-    @State private var keywordsContainerOffset: CGFloat = 9999
+    @State var coverOffset: CGFloat = 0
+    @State private var keywordsContainerOffset: CGFloat = UIScreen.main.bounds.maxY
+    
+    private let abyss: CGFloat = UIScreen.main.bounds.maxY
 
     @State var displayMode: RecordDisplayMode = .fixed
 
@@ -65,15 +67,15 @@ struct RecordItemView: View {
                 recordImage
                 recordCover
                     .animate {
-                        coverOffset = 9999
+                        coverOffset = abyss
                     }
                     .offset(y: coverOffset)
 
                 VStack {
                     Spacer()
                     largeKeywords
-                        .animate {
-                            keywordsContainerOffset = 150
+                        .animate(using: .spring()) {
+                            keywordsContainerOffset = 200
                         }
                         .offset(y: keywordsContainerOffset)
                 }
@@ -89,7 +91,7 @@ struct RecordItemView: View {
                     Spacer()
                     largeKeywords
                         .animate {
-                            keywordsContainerOffset = 9999
+                            keywordsContainerOffset = abyss
                         }
                         .offset(y: keywordsContainerOffset)
                 }
@@ -99,7 +101,8 @@ struct RecordItemView: View {
 }
 
 extension View {
-    func animate(using animation: Animation = Animation.easeInOut(duration: 1), _ action: @escaping () -> Void) -> some View {
+    func animate(using animation: Animation = Animation.easeInOut(duration: 1),
+                 _ action: @escaping () -> Void) -> some View {
         onAppear {
             withAnimation(animation) {
                 action()

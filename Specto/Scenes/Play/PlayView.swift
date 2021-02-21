@@ -26,13 +26,29 @@ struct PlayView: View {
 
     var body: some View {
         ZStack {
-            discAndCover
+            if isPlaying {
+                RecordItemView(
+                    image: item.image,
+                    keywords: item.keywords,
+                    coverOffset: 0,
+                    displayMode: .startPlaying
+                    
+                )
+                .frame(width: 300, height: 300, alignment: .center)
                 .onAppear {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
                         isPlaying = false
                     }
                 }
+            } else {
+                RecordItemView(
+                    image: item.image,
+                    keywords: item.keywords,
+                    coverOffset: UIScreen.main.bounds.maxY,
+                    displayMode: .finishPlaying
+                )
                 .frame(width: 300, height: 300, alignment: .center)
+            }
         }.hiddenNavigationBarStyle()
     }
 }
