@@ -11,7 +11,7 @@ class GalleryViewModel: ObservableObject {
 
     @Published var items: [GalleryItem] = []
 
-    @Published var touchedOne: Int? = nil
+    @Published var touchedOne: GalleryItem? = nil
 
     init() {
 

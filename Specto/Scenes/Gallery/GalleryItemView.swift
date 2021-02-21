@@ -71,8 +71,9 @@ struct GalleryItemView: View {
 
     func buildRecordItemView(item: GalleryItem) -> RecordItemView {
         return RecordItemView(item: item,
-                              frameWidth: frameWidth,
-                              frameHeight: frameHeight,
+            zoomed: false,
+//                              frameWidth: frameWidth,
+//                              frameHeight: frameHeight,
                               alignment: alignment)
     }
     
