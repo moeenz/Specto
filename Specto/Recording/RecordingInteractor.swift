@@ -31,8 +31,8 @@ class RecordingInteractor {
 
         recording.setValue(createdAt, forKey: "createdAt")
         recording.setValue(keywords, forKey: "keywords")
-        recording.setValue(audioPath, forKey: "filePath")
-        recording.setValue(imagePath, forKey: "imagePath")
+        recording.setValue(URL(fileURLWithPath:audioPath).lastPathComponent, forKey: "filePath")
+        recording.setValue(URL(fileURLWithPath:imagePath).lastPathComponent, forKey: "imagePath")
         recording.setValue(text, forKey: "text")
 
         do {
@@ -48,7 +48,14 @@ class RecordingInteractor {
         let uuid = UUID().uuidString
         let audioFilename = uuid + ".caf"
         let imageFilename = uuid + ".png"
-        return (audio: URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(audioFilename),
-                image: URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(imageFilename))
+        return (audio: getDocumentsDirectory().appendingPathComponent(audioFilename),
+                image: getDocumentsDirectory().appendingPathComponent(imageFilename))
+    }
+    
+    
+    static func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let documentsDirectory = paths[0]
+        return documentsDirectory
     }
 }
