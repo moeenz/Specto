@@ -14,7 +14,7 @@ struct RecordItemView: View {
     
     var onPlay = false
     @State var coverOffset: CGFloat = 0
-    @State private var keywordsContainerOffset: CGFloat = UIScreen.main.bounds.maxY
+    @State var keywordsContainerOffset: CGFloat = UIScreen.main.bounds.maxY
     
     private let abyss: CGFloat = UIScreen.main.bounds.maxY
 
@@ -99,15 +99,3 @@ struct RecordItemView: View {
         }
     }
 }
-
-extension View {
-    func animate(using animation: Animation = Animation.easeInOut(duration: 1),
-                 _ action: @escaping () -> Void) -> some View {
-        onAppear {
-            withAnimation(animation) {
-                action()
-            }
-        }
-    }
-}
-
