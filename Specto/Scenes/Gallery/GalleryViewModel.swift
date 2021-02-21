@@ -12,6 +12,8 @@ class GalleryViewModel: ObservableObject {
     @Published var items: [GalleryItem] = []
 
     @Published var touchedOne: GalleryItem? = nil
+    
+    @Published var isEmpty: Bool = false
 
     init() {
 
@@ -21,6 +23,8 @@ class GalleryViewModel: ObservableObject {
             items = result.enumerated().map { (index, element) in
                 GalleryItem(id: index, keywords: element.getKeywords(), image: element.imagePath)
             }
+        } else {
+            isEmpty = true
         }
     }
 }

@@ -31,7 +31,33 @@ struct GalleryView: View {
         UINavigationBar.setAnimationsEnabled(false)
     }
     
-    var content: some View {
+    var emptyGallery: some View {
+        Text("No recordings yet")
+            .font(.system(size: 32, weight: .ultraLight, design: .default))
+            .offset(y: -50)
+    }
+    
+    var recordButton: some View {
+        NavigationLink(
+            destination: RecordView(),
+            label: {
+                ZStack {
+                    HStack {
+                        RoundedRectangle(cornerRadius: 10)
+                            .fill(Color.red)
+                            .frame(height: 50, alignment: .center)
+                            .padding(EdgeInsets(top: 0, leading: 32, bottom: 0, trailing: 32))
+                            .shadow(color: Color.gray, radius: 2, x: 1, y: 1)
+                    }
+                    Text("New Recording")
+                        .font(.system(size: 18, weight: .heavy, design: .default))
+                        .foregroundColor(Color.white)
+                }
+            }
+        )
+    }
+    
+    var galleryItems: some View {
         ZStack {
             if let item = viewModel.touchedOne {
                 RecordItemView(image: item.image,
@@ -70,18 +96,28 @@ struct GalleryView: View {
     }
     
     var body: some View {
+    
         NavigationView {
             ZStack {
-                if let touchedOne = viewModel.touchedOne {
-                    NavigationLink(
-                        destination: PlayView(item: touchedOne, onPlayFinishHandler: onPlayFinished),
-                        isActive: $pushLink,
-                        label: {
-                            EmptyView()
-                        }
-                    )
+                emptyGallery
+//                if viewModel.isEmpty {
+//                    emptyGallery
+//                } else {
+//                    if let touchedOne = viewModel.touchedOne {
+//                        NavigationLink(
+//                            destination: PlayView(item: touchedOne, onPlayFinishHandler: onPlayFinished),
+//                            isActive: $pushLink,
+//                            label: {
+//                                EmptyView()
+//                            }
+//                        )
+//                    }
+//                    galleryItems
+//                }
+                VStack {
+                    Spacer()
+                    recordButton
                 }
-                content
             }
         }
     }
