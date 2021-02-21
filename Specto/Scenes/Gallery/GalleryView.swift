@@ -99,21 +99,20 @@ struct GalleryView: View {
     
         NavigationView {
             ZStack {
-                emptyGallery
-//                if viewModel.isEmpty {
-//                    emptyGallery
-//                } else {
-//                    if let touchedOne = viewModel.touchedOne {
-//                        NavigationLink(
-//                            destination: PlayView(item: touchedOne, onPlayFinishHandler: onPlayFinished),
-//                            isActive: $pushLink,
-//                            label: {
-//                                EmptyView()
-//                            }
-//                        )
-//                    }
-//                    galleryItems
-//                }
+                if viewModel.isEmpty {
+                    emptyGallery
+                } else {
+                    if let touchedOne = viewModel.touchedOne {
+                        NavigationLink(
+                            destination: PlayView(item: touchedOne, onPlayFinishHandler: onPlayFinished),
+                            isActive: $pushLink,
+                            label: {
+                                EmptyView()
+                            }
+                        )
+                    }
+                    galleryItems
+                }
                 VStack {
                     Spacer()
                     recordButton
