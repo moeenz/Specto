@@ -41,7 +41,8 @@ struct GalleryView: View {
                         withAnimation(.spring()) {
                             viewModel.touchedOne = nil
                         }
-                    }.matchedGeometryEffect(id: String(item.id), in: animation)
+                    }
+                    .matchedGeometryEffect(id: String(item.id), in: animation)
                     .frame(width: 300, height: 300, alignment: .center)
                     .offset(y: -48)
             } else {
@@ -73,7 +74,7 @@ struct GalleryView: View {
             ZStack {
                 if let touchedOne = viewModel.touchedOne {
                     NavigationLink(
-                        destination: PlayView(item: touchedOne),
+                        destination: PlayView(item: touchedOne, onPlayFinishHandler: onPlayFinished),
                         isActive: $pushLink,
                         label: {
                             EmptyView()
@@ -82,6 +83,12 @@ struct GalleryView: View {
                 }
                 content
             }
+        }
+    }
+    
+    func onPlayFinished() {
+        withAnimation(.spring()) {
+            viewModel.touchedOne = nil
         }
     }
 }
