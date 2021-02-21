@@ -69,39 +69,39 @@ struct GalleryTransitionView<Content: View>: View {
             HStack {
                 // We used a NavigationLink here because we need to push onto to the
                 //  navigation stack once the animation is finished.
-                NavigationLink(
-                    destination: LazyView(PlayView(navDismissHandler: onNavDismiss)),
-                    isActive: $pushNavigationLink,
-                    label: {
-                        itemView
-                            .onAppear {
-                                withAnimation(animation) {
-                                    switch direction {
-                                    // This part executes when we're coming from GalleryView and want to move
-                                    //  the item to the center of screen.
-                                    case .toCenter:
-                                        currentAlignment = .center
-                                        currentX = 0
-                                        currentY = 0
-                                    // This part executes when we're back from PlayView and want to put back
-                                    //  the item to its original place.
-                                    case .backInPlace:
-                                        currentAlignment = .topLeading
-                                        currentX = itemOriginX
-                                        currentY = itemOriginY
-                                    }
-                                }
-
-                                // Once the animation is done we push forward or backward on the navigation
-                                //  stack based on the direction state.
-                                DispatchQueue.main.asyncAfter(deadline: .now() + animationLength) {
-                                    if direction == .toCenter {
-                                        pushNavigationLink = true
-                                    }
-                                }
-                            }
-                    }
-                )
+//                NavigationLink(
+//                    destination: LazyView(PlayView(navDismissHandler: onNavDismiss)),
+//                    isActive: $pushNavigationLink,
+//                    label: {
+//                        itemView
+//                            .onAppear {
+//                                withAnimation(animation) {
+//                                    switch direction {
+//                                    // This part executes when we're coming from GalleryView and want to move
+//                                    //  the item to the center of screen.
+//                                    case .toCenter:
+//                                        currentAlignment = .center
+//                                        currentX = 0
+//                                        currentY = 0
+//                                    // This part executes when we're back from PlayView and want to put back
+//                                    //  the item to its original place.
+//                                    case .backInPlace:
+//                                        currentAlignment = .topLeading
+//                                        currentX = itemOriginX
+//                                        currentY = itemOriginY
+//                                    }
+//                                }
+//
+//                                // Once the animation is done we push forward or backward on the navigation
+//                                //  stack based on the direction state.
+//                                DispatchQueue.main.asyncAfter(deadline: .now() + animationLength) {
+//                                    if direction == .toCenter {
+//                                        pushNavigationLink = true
+//                                    }
+//                                }
+//                            }
+//                    }
+//                )
             }
             .frame(maxWidth: .infinity, alignment: currentAlignment)  // Filling the entire screen width.
             .padding(EdgeInsets(top: 0, leading: currentX, bottom: 0, trailing: 0))

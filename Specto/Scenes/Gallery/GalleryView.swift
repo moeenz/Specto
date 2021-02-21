@@ -6,70 +6,82 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 typealias NavDismissHandler = () -> Void
 
 struct GalleryView: View {
-
+    
     // View model controlling GalleryView state.
     @StateObject var viewModel = GalleryViewModel()
-
+    
+    @Namespace private var animation
+    @State private var show: Bool = false
+    
+    @State private var pushLink = false
+    
     // Our grid consists  of two equal size columns hence the .flexible() modifier.
     private let columns = [
         GridItem(.flexible()),
         GridItem(.flexible())
     ]
-
+    
     init() {
         // Disable the default slide animation in navigation views.
         UINavigationBar.setAnimationsEnabled(false)
     }
-
+    
     var content: some View {
-        ScrollView {
-            LazyVGrid(columns: columns, spacing: 20) {
-                ForEach(viewModel.items) { item in
-                    GalleryItemView(coverColor: Color.red,
-                                    contentItem: item,
-                                    touchHandler: onItemTouched,
-                                    navDismissHandler: onNavDismiss)
+        ZStack {
+            if let item = viewModel.touchedOne {
+                RecordItemView(image: item.image,
+                               keywords: item.keywords,
+                               displayMode: .fixed)
+                    .onTapGesture {
+                        withAnimation(.spring()) {
+                            viewModel.touchedOne = nil
+                        }
+                    }.matchedGeometryEffect(id: String(item.id), in: animation)
+                    .frame(width: 300, height: 300, alignment: .center)
+                    .offset(y: -48)
+            } else {
+                ScrollView {
+                    LazyVGrid(columns: columns, spacing: 50) {
+                        ForEach(viewModel.items) { item in
+                            RecordItemView(image: item.image,
+                                           keywords: item.keywords,
+                                           displayMode: .fixed)
+                                .onTapGesture {
+                                    withAnimation(.spring()) {
+                                        viewModel.touchedOne = item
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                                            pushLink = true
+                                        }
+                                    }
+                                }.matchedGeometryEffect(id: String(item.id), in: animation)
+                                .frame(width: 150, height: 150)
+                        }
+                    }
+                    .padding(.horizontal)
                 }
             }
-            .padding(.horizontal)
         }
     }
-
+    
     var body: some View {
         NavigationView {
             ZStack {
-                content
-                VStack {
-                    Spacer()
-                    Text("Gallery View")
+                if let touchedOne = viewModel.touchedOne {
+                    NavigationLink(
+                        destination: PlayView(item: touchedOne),
+                        isActive: $pushLink,
+                        label: {
+                            EmptyView()
+                        }
+                    )
                 }
+                content
             }
-        }.hiddenNavigationBarStyle()
-    }
-
-    func onItemTouched(id: Int) {
-        // Store the id of the touched item.
-        viewModel.touchedOne = id
-
-        // Since one of the items is touched, it's display mode should be changed to fixed.
-        //   Other ones should change to hidden.
-        viewModel.items = viewModel.items.map {
-            $0.id == id ? GalleryItem(id: $0.id, keywords: $0.keywords, displayMode: .activated, image: $0.image)
-                        : GalleryItem(id: $0.id, keywords: $0.keywords, displayMode: .hidden, image: $0.image)
         }
-    }
-
-    func onNavDismiss() {
-        if viewModel.touchedOne == nil { return }
-
-        viewModel.items = viewModel.items.map {
-            GalleryItem(id: $0.id, keywords: $0.keywords, displayMode: .fixed, image: $0.image)
-        }
-
-        viewModel.touchedOne = nil
     }
 }

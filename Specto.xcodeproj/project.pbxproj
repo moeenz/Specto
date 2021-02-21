@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F43C4BB25E2A81300B69531 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 0F43C4BA25E2A81300B69531 /* Kingfisher */; };
 		0F87065825DEB3B400C31CA7 /* Recording+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F87065725DEB3B400C31CA7 /* Recording+extension.swift */; };
 		0F87065D25DEBBFA00C31CA7 /* PlayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F87065C25DEBBFA00C31CA7 /* PlayViewModel.swift */; };
 		0FBA259C25DDA6D50001D9D3 /* SpectoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBA259B25DDA6D50001D9D3 /* SpectoApp.swift */; };
@@ -36,7 +37,7 @@
 		0FE7206225DDAF3600CB6B06 /* AudioVisualizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE7206125DDAF3600CB6B06 /* AudioVisualizer.swift */; };
 		0FE7206825DE708200CB6B06 /* PlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE7206725DE708200CB6B06 /* PlayView.swift */; };
 		0FE7208025DEAAF000CB6B06 /* GalleryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE7207F25DEAAF000CB6B06 /* GalleryViewModel.swift */; };
-		0FE7208525DEAB9D00CB6B06 /* GalleryItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE7208425DEAB9D00CB6B06 /* GalleryItemView.swift */; };
+		0FE7208525DEAB9D00CB6B06 /* GalleryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE7208425DEAB9D00CB6B06 /* GalleryItem.swift */; };
 		1930B5208F739DDC920FE3F2 /* Pods_SpectoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28DAA1457C7CAF8E40B247CD /* Pods_SpectoUITests.framework */; };
 		7C0ED45825DE8DE00080C536 /* LazyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0ED45725DE8DE00080C536 /* LazyView.swift */; };
 		9EB92A05ECE04D3610C8FC30 /* Pods_Specto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15B5E83D6B8923E979A2E5C9 /* Pods_Specto.framework */; };
@@ -95,7 +96,7 @@
 		0FE7206125DDAF3600CB6B06 /* AudioVisualizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioVisualizer.swift; sourceTree = "<group>"; };
 		0FE7206725DE708200CB6B06 /* PlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayView.swift; sourceTree = "<group>"; };
 		0FE7207F25DEAAF000CB6B06 /* GalleryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewModel.swift; sourceTree = "<group>"; };
-		0FE7208425DEAB9D00CB6B06 /* GalleryItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryItemView.swift; sourceTree = "<group>"; };
+		0FE7208425DEAB9D00CB6B06 /* GalleryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryItem.swift; sourceTree = "<group>"; };
 		15B5E83D6B8923E979A2E5C9 /* Pods_Specto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Specto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E0092205442F102ED933461 /* Pods_SpectoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpectoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		28DAA1457C7CAF8E40B247CD /* Pods_SpectoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpectoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -113,6 +114,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F43C4BB25E2A81300B69531 /* Kingfisher in Frameworks */,
 				0FE7200125DDAA8F00CB6B06 /* AudioKit in Frameworks */,
 				9EB92A05ECE04D3610C8FC30 /* Pods_Specto.framework in Frameworks */,
 			);
@@ -268,7 +270,7 @@
 			children = (
 				0FE7205A25DDAE1E00CB6B06 /* GalleryView.swift */,
 				0FE7207F25DEAAF000CB6B06 /* GalleryViewModel.swift */,
-				0FE7208425DEAB9D00CB6B06 /* GalleryItemView.swift */,
+				0FE7208425DEAB9D00CB6B06 /* GalleryItem.swift */,
 				0FBF84C625E0D1CD002A600E /* GalleryTransitionView.swift */,
 			);
 			path = Gallery;
@@ -336,6 +338,7 @@
 			name = Specto;
 			packageProductDependencies = (
 				0FE7200025DDAA8F00CB6B06 /* AudioKit */,
+				0F43C4BA25E2A81300B69531 /* Kingfisher */,
 			);
 			productName = Specto;
 			productReference = 0FBA259825DDA6D50001D9D3 /* Specto.app */;
@@ -412,6 +415,7 @@
 			mainGroup = 0FBA258F25DDA6D50001D9D3;
 			packageReferences = (
 				0FE71FFF25DDAA8F00CB6B06 /* XCRemoteSwiftPackageReference "AudioKit" */,
+				0F43C4B925E2A81300B69531 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 0FBA259925DDA6D50001D9D3 /* Products */;
 			projectDirPath = "";
@@ -539,7 +543,7 @@
 				0FBF84D625E0F4BB002A600E /* RecordItemView.swift in Sources */,
 				0FBF84C725E0D1CD002A600E /* GalleryTransitionView.swift in Sources */,
 				0FE7205625DDADE600CB6B06 /* RecordView.swift in Sources */,
-				0FE7208525DEAB9D00CB6B06 /* GalleryItemView.swift in Sources */,
+				0FE7208525DEAB9D00CB6B06 /* GalleryItem.swift in Sources */,
 				0FE7205B25DDAE1E00CB6B06 /* GalleryView.swift in Sources */,
 				0FE7200B25DDAB5A00CB6B06 /* Carl.swift in Sources */,
 				0FBA259C25DDA6D50001D9D3 /* SpectoApp.swift in Sources */,
@@ -883,6 +887,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		0F43C4B925E2A81300B69531 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.1.1;
+			};
+		};
 		0FE71FFF25DDAA8F00CB6B06 /* XCRemoteSwiftPackageReference "AudioKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/AudioKit/AudioKit";
@@ -894,6 +906,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		0F43C4BA25E2A81300B69531 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0F43C4B925E2A81300B69531 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
 		0FE7200025DDAA8F00CB6B06 /* AudioKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 0FE71FFF25DDAA8F00CB6B06 /* XCRemoteSwiftPackageReference "AudioKit" */;
