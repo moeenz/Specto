@@ -17,7 +17,6 @@ class RecordViewModel: ObservableObject, FFT, Scripter {
     private var image = UIImage()
     
     func setImage(_ image: UIImage) {
-        
         self.image = image
     }
 
