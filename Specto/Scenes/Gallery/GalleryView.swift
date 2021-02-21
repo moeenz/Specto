@@ -73,7 +73,7 @@ struct GalleryView: View {
             ZStack {
                 if let touchedOne = viewModel.touchedOne {
                     NavigationLink(
-                        destination: PlayView(item: touchedOne, playFinishHandler: onPlayFinished),
+                        destination: PlayView(item: touchedOne),
                         isActive: $pushLink,
                         label: {
                             EmptyView()
