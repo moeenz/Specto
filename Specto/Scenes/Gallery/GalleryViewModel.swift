@@ -21,7 +21,7 @@ class GalleryViewModel: ObservableObject {
 
         if let result = RecordingInteractor(context).findAll() {
             items = result.enumerated().map { (index, element) in
-                GalleryItem(id: index, keywords: element.getKeywords(), image: element.imagePath)
+                GalleryItem(id: index, keywords: element.getKeywords(), image: element.imagePath, audio: element.filePath)
             }
         } else {
             isEmpty = true

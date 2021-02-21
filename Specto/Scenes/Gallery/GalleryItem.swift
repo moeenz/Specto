@@ -12,4 +12,5 @@ struct GalleryItem: Identifiable {
     let id: Int
     let keywords: [String]
     let image: String?
+    let audio: String?
 }
