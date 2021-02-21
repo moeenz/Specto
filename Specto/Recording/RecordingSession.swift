@@ -73,7 +73,7 @@ class RecordingSession: Scripter, Leaker {
         carl.stop()
         charles.stop()
         
-        if let data = image.pngData() {
+        if let data = image.circle().pngData() {
     
             try? data.write(to: imageURL)
         }

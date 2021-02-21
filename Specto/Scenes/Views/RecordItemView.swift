@@ -51,9 +51,10 @@ struct RecordItemView: View {
 
     var largeKeywords: some View {
         HStack {
-            Text(keywords[0])
-            Text(keywords[1])
-            Text(keywords[2])
+            
+            ForEach(keywords, id: \.self) {keyword in
+                Text(keyword)
+            }
         }
     }
 
