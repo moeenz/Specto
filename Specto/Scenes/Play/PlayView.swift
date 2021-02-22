@@ -36,8 +36,8 @@ struct PlayView: View {
             keywordsContainerOffset: viewModel.isPlaying ? UIScreen.main.bounds.maxY : 200,
             displayMode: viewModel.isPlaying ? .startPlaying : .finishPlaying
         )
-        .offset(y: -48)
         .frame(width: 300, height: 300, alignment: .center)
+        .offset(y: 15)
     }
 
     var body: some View {

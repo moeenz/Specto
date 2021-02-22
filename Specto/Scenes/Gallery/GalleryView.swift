@@ -66,7 +66,6 @@ struct GalleryView: View {
                                displayMode: .fixed)
                     .matchedGeometryEffect(id: String(reducer.nowPlaying!.id), in: animation)
                     .frame(width: 300, height: 300)
-                    .offset(y: -48)
                     .onAppear {
                         if displayMode == .zoomIn {
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
@@ -85,13 +84,14 @@ struct GalleryView: View {
             }
         }
     }
-
+    
     var body: some View {
         ZStack {
             if reducer.isEmpty {
                 emptyGallery
             } else {
                 galleryItems
+                    .padding()
             }
         }
     }
