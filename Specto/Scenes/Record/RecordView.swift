@@ -11,6 +11,8 @@ import Speech
 struct RecordView: View {
     
     @ObservedObject var viewModel: RecordViewModel
+    
+    @Environment(\.presentationMode) var presentationMode
 
     init() {
         
@@ -32,6 +34,7 @@ struct RecordView: View {
                 if viewModel.recording {
                     viewModel.setImage(visualizer.asImage(size: CGSize(width: 350, height: 350)))
                     viewModel.stopSession()
+                    presentationMode.wrappedValue.dismiss()
                 }
             }
     }

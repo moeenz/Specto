@@ -18,10 +18,11 @@
 		0FBA25B925DDA6D60001D9D3 /* SpectoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBA25B825DDA6D60001D9D3 /* SpectoUITests.swift */; };
 		0FBF84BD25E0D10A002A600E /* View+modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBF84BC25E0D10A002A600E /* View+modifiers.swift */; };
 		0FBF84C225E0D12A002A600E /* View+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBF84C125E0D12A002A600E /* View+extensions.swift */; };
-		0FBF84C725E0D1CD002A600E /* GalleryTransitionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBF84C625E0D1CD002A600E /* GalleryTransitionView.swift */; };
 		0FBF84D625E0F4BB002A600E /* RecordItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBF84D525E0F4BB002A600E /* RecordItemView.swift */; };
 		0FE2990425E2FE2400AD95EA /* RecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE2990325E2FE2400AD95EA /* RecordButton.swift */; };
 		0FE2990925E2FF5600AD95EA /* StopButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE2990825E2FF5600AD95EA /* StopButton.swift */; };
+		0FE2991525E39CA300AD95EA /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE2991425E39CA300AD95EA /* RootView.swift */; };
+		0FE2991D25E3B43800AD95EA /* RootReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE2991C25E3B43800AD95EA /* RootReducer.swift */; };
 		0FE7200125DDAA8F00CB6B06 /* AudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0FE7200025DDAA8F00CB6B06 /* AudioKit */; };
 		0FE7200B25DDAB5A00CB6B06 /* Carl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE7200A25DDAB5A00CB6B06 /* Carl.swift */; };
 		0FE7201325DDAB8100CB6B06 /* Leaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE7201225DDAB8100CB6B06 /* Leaker.swift */; };
@@ -38,7 +39,6 @@
 		0FE7205B25DDAE1E00CB6B06 /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE7205A25DDAE1E00CB6B06 /* GalleryView.swift */; };
 		0FE7206225DDAF3600CB6B06 /* AudioVisualizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE7206125DDAF3600CB6B06 /* AudioVisualizer.swift */; };
 		0FE7206825DE708200CB6B06 /* PlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE7206725DE708200CB6B06 /* PlayView.swift */; };
-		0FE7208025DEAAF000CB6B06 /* GalleryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE7207F25DEAAF000CB6B06 /* GalleryViewModel.swift */; };
 		0FE7208525DEAB9D00CB6B06 /* GalleryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE7208425DEAB9D00CB6B06 /* GalleryItem.swift */; };
 		1930B5208F739DDC920FE3F2 /* Pods_SpectoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28DAA1457C7CAF8E40B247CD /* Pods_SpectoUITests.framework */; };
 		7C0ED45825DE8DE00080C536 /* LazyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0ED45725DE8DE00080C536 /* LazyView.swift */; };
@@ -80,10 +80,11 @@
 		0FBA25BA25DDA6D60001D9D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0FBF84BC25E0D10A002A600E /* View+modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+modifiers.swift"; sourceTree = "<group>"; };
 		0FBF84C125E0D12A002A600E /* View+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+extensions.swift"; sourceTree = "<group>"; };
-		0FBF84C625E0D1CD002A600E /* GalleryTransitionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryTransitionView.swift; sourceTree = "<group>"; };
 		0FBF84D525E0F4BB002A600E /* RecordItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordItemView.swift; sourceTree = "<group>"; };
 		0FE2990325E2FE2400AD95EA /* RecordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordButton.swift; sourceTree = "<group>"; };
 		0FE2990825E2FF5600AD95EA /* StopButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopButton.swift; sourceTree = "<group>"; };
+		0FE2991425E39CA300AD95EA /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		0FE2991C25E3B43800AD95EA /* RootReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootReducer.swift; sourceTree = "<group>"; };
 		0FE7200A25DDAB5A00CB6B06 /* Carl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Carl.swift; sourceTree = "<group>"; };
 		0FE7201225DDAB8100CB6B06 /* Leaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leaker.swift; sourceTree = "<group>"; };
 		0FE7201A25DDAB9300CB6B06 /* FFT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFT.swift; sourceTree = "<group>"; };
@@ -99,7 +100,6 @@
 		0FE7205A25DDAE1E00CB6B06 /* GalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryView.swift; sourceTree = "<group>"; };
 		0FE7206125DDAF3600CB6B06 /* AudioVisualizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioVisualizer.swift; sourceTree = "<group>"; };
 		0FE7206725DE708200CB6B06 /* PlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayView.swift; sourceTree = "<group>"; };
-		0FE7207F25DEAAF000CB6B06 /* GalleryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewModel.swift; sourceTree = "<group>"; };
 		0FE7208425DEAB9D00CB6B06 /* GalleryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryItem.swift; sourceTree = "<group>"; };
 		15B5E83D6B8923E979A2E5C9 /* Pods_Specto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Specto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E0092205442F102ED933461 /* Pods_SpectoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpectoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -208,6 +208,15 @@
 			path = SpectoUITests;
 			sourceTree = "<group>";
 		};
+		0FE2991325E39C9500AD95EA /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				0FE2991425E39CA300AD95EA /* RootView.swift */,
+				0FE2991C25E3B43800AD95EA /* RootReducer.swift */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
 		0FE7200525DDAB2600CB6B06 /* Recording */ = {
 			isa = PBXGroup;
 			children = (
@@ -251,6 +260,7 @@
 		0FE7204A25DDAD2200CB6B06 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				0FE2991325E39C9500AD95EA /* Root */,
 				0FE7206625DE706D00CB6B06 /* Play */,
 				0FE7206025DDAF1800CB6B06 /* Views */,
 				0FE7204C25DDAD3700CB6B06 /* Gallery */,
@@ -273,9 +283,7 @@
 			isa = PBXGroup;
 			children = (
 				0FE7205A25DDAE1E00CB6B06 /* GalleryView.swift */,
-				0FE7207F25DEAAF000CB6B06 /* GalleryViewModel.swift */,
 				0FE7208425DEAB9D00CB6B06 /* GalleryItem.swift */,
-				0FBF84C625E0D1CD002A600E /* GalleryTransitionView.swift */,
 			);
 			path = Gallery;
 			sourceTree = "<group>";
@@ -546,20 +554,20 @@
 				0FE7203025DDABFC00CB6B06 /* PersistenceController.swift in Sources */,
 				0FBA259E25DDA6D50001D9D3 /* ContentView.swift in Sources */,
 				0FE7202525DDABC100CB6B06 /* Scripter.swift in Sources */,
+				0FE2991525E39CA300AD95EA /* RootView.swift in Sources */,
 				0FE7206825DE708200CB6B06 /* PlayView.swift in Sources */,
 				0FBF84D625E0F4BB002A600E /* RecordItemView.swift in Sources */,
-				0FBF84C725E0D1CD002A600E /* GalleryTransitionView.swift in Sources */,
 				0FE7205625DDADE600CB6B06 /* RecordView.swift in Sources */,
 				0FE7208525DEAB9D00CB6B06 /* GalleryItem.swift in Sources */,
 				0FE7205B25DDAE1E00CB6B06 /* GalleryView.swift in Sources */,
 				0FE2990425E2FE2400AD95EA /* RecordButton.swift in Sources */,
 				0FE7200B25DDAB5A00CB6B06 /* Carl.swift in Sources */,
 				0FBA259C25DDA6D50001D9D3 /* SpectoApp.swift in Sources */,
-				0FE7208025DEAAF000CB6B06 /* GalleryViewModel.swift in Sources */,
 				0FBF84BD25E0D10A002A600E /* View+modifiers.swift in Sources */,
 				0FE7201B25DDAB9300CB6B06 /* FFT.swift in Sources */,
 				0FE7203525DDAC4900CB6B06 /* RecordingInteractor.swift in Sources */,
 				0F87065825DEB3B400C31CA7 /* Recording+extension.swift in Sources */,
+				0FE2991D25E3B43800AD95EA /* RootReducer.swift in Sources */,
 				0FE7202B25DDABE500CB6B06 /* DataStore.xcdatamodeld in Sources */,
 				0FE7204E25DDAD6300CB6B06 /* RecordViewModel.swift in Sources */,
 				0FE7202025DDABAD00CB6B06 /* Charles.swift in Sources */,

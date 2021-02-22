@@ -10,47 +10,54 @@ import SwiftUI
 struct PlayView: View {
 
     var item: GalleryItem
-    @StateObject var viewModel = PlayViewModel()
+
+    @StateObject private var viewModel = PlayViewModel()
     
-    var onPlayFinishHandler: (() -> Void)?
+    var onPlayFinished: (() -> Void)?
 
     /// We use this Environment field to modify presentation status.
-    @Environment(\.presentationMode) var presentation
+    @Environment(\.presentationMode) private var presentation
 
+    func buildDiscAndCoverView () -> RecordItemView {
+        RecordItemView(
+            image: item.image,
+            keywords: item.keywords,
+            coverOffset: viewModel.isPlaying ? 0 : UIScreen.main.bounds.maxY,
+            keywordsContainerOffset: viewModel.isPlaying ? UIScreen.main.bounds.maxY : 200,
+            displayMode: viewModel.isPlaying ? .startPlaying : .finishPlaying
+        )
+    }
+    
     var discAndCover: some View {
         RecordItemView(
             image: item.image,
             keywords: item.keywords,
+            coverOffset: viewModel.isPlaying ? 0 : UIScreen.main.bounds.maxY,
+            keywordsContainerOffset: viewModel.isPlaying ? UIScreen.main.bounds.maxY : 200,
             displayMode: viewModel.isPlaying ? .startPlaying : .finishPlaying
         )
+        .offset(y: -48)
+        .frame(width: 300, height: 300, alignment: .center)
     }
 
     var body: some View {
         ZStack {
+            Color(red: 26 / 255, green: 26 / 255, blue: 26 / 255).edgesIgnoringSafeArea(.all)
             if viewModel.isPlaying {
-                RecordItemView(
-                    image: item.image,
-                    keywords: item.keywords,
-                    coverOffset: 0,
-                    keywordsContainerOffset: UIScreen.main.bounds.maxY,
-                    displayMode: .startPlaying
-                )
-                .frame(width: 300, height: 300, alignment: .center)
-                .onAppear {
-                    
-                    viewModel.play(item: item, onPlayFinishHandler: onPlayFinishHandler)
+                discAndCover
+                    .onAppear {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                            viewModel.isPlaying = false
 
-                }
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                                onPlayFinished?()
+                            }
+                        }
+                    }
             } else {
-                RecordItemView(
-                    image: item.image,
-                    keywords: item.keywords,
-                    coverOffset: UIScreen.main.bounds.maxY,
-                    keywordsContainerOffset: 200,
-                    displayMode: .finishPlaying
-                )
-                .frame(width: 300, height: 300, alignment: .center)
+                discAndCover
             }
-        }.hiddenNavigationBarStyle()
+        }
+        .hiddenNavigationBarStyle()
     }
 }
