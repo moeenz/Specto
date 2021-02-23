@@ -33,7 +33,6 @@ class RecordingSession: Scripter, Leaker {
     private var fullTranscriptionText: String = ""
     
     init() throws {
-        
         let urls = RecordingInteractor.generateFileURLs()
         recordingURL = urls.audio
         imageURL = urls.image

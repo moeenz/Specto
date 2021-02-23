@@ -9,16 +9,24 @@ enum RecordDisplayMode {
 
 struct RecordItemView: View {
 
+    private let downwardAbyss: CGFloat = UIScreen.main.bounds.maxY
+    private let upwardAbyss: CGFloat = UIScreen.main.bounds.minY
+
+    var coverColor: Color = .green
+    var coverFont: Font = .system(size: 20, weight: .heavy, design: .default)
     var image: String?
     var keywords: [String]
-    
-    var onPlay = false
-    @State var coverOffset: CGFloat = 0
-    @State var keywordsContainerOffset: CGFloat = UIScreen.main.bounds.maxY
-    
-    private let abyss: CGFloat = UIScreen.main.bounds.maxY
 
+    private var animation: Animation {
+        Animation
+            
+            .linear(duration: 7.5)
+            .repeatForever(autoreverses: false)
+    }
+
+    @State var coverOffset: CGFloat = 0
     @State var displayMode: RecordDisplayMode = .fixed
+    @State var rotateFactor = Angle(radians: 0)
 
     var recordImage: some View {
         ZStack {
@@ -26,36 +34,33 @@ struct RecordItemView: View {
                 KFImage(RecordingInteractor.getDocumentsDirectory().appendingPathComponent(image))
                     .resizable()
                     .aspectRatio(contentMode: .fill)
-                    .offset(y: -50)
             } else {
                 Image("GenericDisc")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
-                    .offset(y: -50)
             }
         }
     }
 
     var recordCover: some View {
         ZStack {
-            Rectangle()
-                .fill(Color.green)
-
+            RoundedRectangle.init(cornerRadius: 5)
+                .fill(coverColor)
+            
             VStack(alignment: .leading) {
                 ForEach(keywords, id: \.self) { keyword in
-                    Text(keyword.uppercased()).font(.system(size: 16, weight: .regular, design: .serif))
+                    Text(keyword.uppercased())
+                        .font(coverFont)
+                        .foregroundColor(Color.black)
+                        .frame(maxHeight: .infinity)
+                        .allowsTightening(true)
+                        .minimumScaleFactor(0.01)
                 }
-            }.offset(x: -20)
-        }
-    }
-
-    var largeKeywords: some View {
-        HStack {
-            
-            ForEach(keywords, id: \.self) {keyword in
-                Text(keyword)
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+            .padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
         }
+        .offset(y: 50)
     }
 
     var body: some View {
@@ -66,20 +71,19 @@ struct RecordItemView: View {
                 recordCover
             case .startPlaying:
                 recordImage
+                    .onAppear {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                            withAnimation(animation) {
+                                rotateFactor = Angle(radians: 2 * Double.pi)
+                            }
+                        }
+                    }
+                    .rotationEffect(rotateFactor)
                 recordCover
                     .animate {
-                        coverOffset = abyss
+                        coverOffset = downwardAbyss
                     }
                     .offset(y: coverOffset)
-
-                VStack {
-                    Spacer()
-                    largeKeywords
-                        .animate(using: .spring()) {
-                            keywordsContainerOffset = 200
-                        }
-                        .offset(y: keywordsContainerOffset)
-                }
             case .finishPlaying:
                 recordImage
                 recordCover
@@ -87,15 +91,6 @@ struct RecordItemView: View {
                         coverOffset = 0
                     }
                     .offset(y: coverOffset)
-
-                VStack {
-                    Spacer()
-                    largeKeywords
-                        .animate {
-                            keywordsContainerOffset = abyss
-                        }
-                        .offset(y: keywordsContainerOffset)
-                }
             }
         }
     }

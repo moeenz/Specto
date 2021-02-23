@@ -9,9 +9,8 @@ import Foundation
 import UIKit
 
 class RecordViewModel: ObservableObject, FFT, Scripter {
-    
     @Published var amplitudes = [[Double]]()
-    @Published var text: String = ""
+    @Published var text: String = "Start speaking!"
     @Published var recording = false
     
     private var image = UIImage()
@@ -26,7 +25,9 @@ class RecordViewModel: ObservableObject, FFT, Scripter {
         do {
             try session = RecordingSession()
             session?.delegate = self
-        } catch {}
+        } catch {
+            print("pekh")
+        }
     }
 
     func startSession() {

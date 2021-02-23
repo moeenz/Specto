@@ -6,11 +6,17 @@
 //
 
 import SwiftUI
+import Speech
 
 struct ContentView: View {
-    
+
+    init() {
+        if SFSpeechRecognizer.authorizationStatus() != .authorized {
+            SFSpeechRecognizer.requestAuthorization {_ in }
+        }
+    }
+
     var body: some View {
-        GalleryView()
-        //RecordView()
+        RootView()
     }
 }
