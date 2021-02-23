@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0F28AA5025E51DCB00D66538 /* StopWatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F28AA4F25E51DCB00D66538 /* StopWatchView.swift */; };
+		0F28AA5D25E584BB00D66538 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F28AA5C25E584BB00D66538 /* InfoView.swift */; };
 		0F43C4BB25E2A81300B69531 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 0F43C4BA25E2A81300B69531 /* Kingfisher */; };
 		0F87065825DEB3B400C31CA7 /* Recording+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F87065725DEB3B400C31CA7 /* Recording+extension.swift */; };
 		0F87065D25DEBBFA00C31CA7 /* PlayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F87065C25DEBBFA00C31CA7 /* PlayViewModel.swift */; };
@@ -66,6 +67,7 @@
 
 /* Begin PBXFileReference section */
 		0F28AA4F25E51DCB00D66538 /* StopWatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopWatchView.swift; sourceTree = "<group>"; };
+		0F28AA5C25E584BB00D66538 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		0F87065725DEB3B400C31CA7 /* Recording+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Recording+extension.swift"; sourceTree = "<group>"; };
 		0F87065C25DEBBFA00C31CA7 /* PlayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayViewModel.swift; sourceTree = "<group>"; };
 		0FBA259825DDA6D50001D9D3 /* Specto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Specto.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -145,6 +147,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F28AA5B25E584B100D66538 /* Info */ = {
+			isa = PBXGroup;
+			children = (
+				0F28AA5C25E584BB00D66538 /* InfoView.swift */,
+			);
+			path = Info;
+			sourceTree = "<group>";
+		};
 		0FBA258F25DDA6D50001D9D3 = {
 			isa = PBXGroup;
 			children = (
@@ -262,6 +272,7 @@
 		0FE7204A25DDAD2200CB6B06 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				0F28AA5B25E584B100D66538 /* Info */,
 				0FE2991325E39C9500AD95EA /* Root */,
 				0FE7206625DE706D00CB6B06 /* Play */,
 				0FE7206025DDAF1800CB6B06 /* Views */,
@@ -579,6 +590,7 @@
 				0FE7203A25DDAC6800CB6B06 /* RecordingSession.swift in Sources */,
 				0FE7201325DDAB8100CB6B06 /* Leaker.swift in Sources */,
 				0FBF84C225E0D12A002A600E /* View+extensions.swift in Sources */,
+				0F28AA5D25E584BB00D66538 /* InfoView.swift in Sources */,
 				7C0ED45825DE8DE00080C536 /* LazyView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

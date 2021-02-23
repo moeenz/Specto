@@ -62,8 +62,9 @@ struct GalleryView: View {
                                     }
                                     .matchedGeometryEffect(id: String(item.id), in: animation)
                                     .frame(width: 150, height: 150)
-                                    
+                                    .padding(EdgeInsets(top: 20, leading: 0, bottom: 0, trailing: 0))
                             }
+                            Spacer()
                         }
                         .padding(.horizontal)
                     }

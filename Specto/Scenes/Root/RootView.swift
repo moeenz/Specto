@@ -6,28 +6,33 @@
 //
 
 import SwiftUI
+import Speech
 
 struct RootView: View {
 
     @StateObject private var reducer = RootReducer()
 
     @State private var isRecordSheetOpen = false
-    
+
     @State private var zoomedItem: GalleryItem?
+
+    init() {
+        grantAllPermissions()
+    }
 
     var background: some View {
         Color(red: 26 / 255, green: 26 / 255, blue: 26 / 255).edgesIgnoringSafeArea(.all)
     }
-    
+
     var recordPane: some View {
         ZStack {
-            VStack {
-                Spacer()
-                RoundedRectangle(cornerRadius: 30)
-                    .fill(Color(red: 81/255, green: 81/255, blue: 81/255))
-                    .frame(height: 120, alignment: .center)
-            }
-            .edgesIgnoringSafeArea(.bottom)
+            Rectangle()
+                .fill(Color(red: 81 / 255, green: 81 / 255, blue: 81 / 255))
+                .frame(height: 200)
+                .offset(y: 100)
+            RoundedRectangle(cornerRadius: 30)
+                .fill(Color(red: 81 / 255, green: 81 / 255, blue: 81 / 255))
+                .frame(height: 100, alignment: .center)
             RecordButton()
                 .opacity(reducer.nowPlaying == nil ? 1: 0.5)
                 .onTapGesture {
@@ -35,11 +40,12 @@ struct RootView: View {
                         isRecordSheetOpen.toggle()
                     }
                 }
-                .frame(height: 150, alignment: .bottom)
                 .sheet(isPresented: $isRecordSheetOpen) {
-                    RecordView()
+                    RecordView(onSessionComplete: {
+                        reducer.fetchLibraryItems()
+                    })
                 }
-        }.frame(height: 150, alignment: .bottom)
+        }
     }
 
     var body: some View {
@@ -65,6 +71,8 @@ struct RootView: View {
             VStack {
                 Spacer()
                 recordPane
+                    .frame(maxHeight: 100)
+                    .edgesIgnoringSafeArea(.bottom)
             }
         }
     }
@@ -73,25 +81,35 @@ struct RootView: View {
         reducer.nowPlaying = item
         reducer.displayMode = .zoomIn
     }
-    
+
     func onPlayFinished() {
         reducer.displayMode = .zoomOut
     }
-    
+
     func onShrinkAnimationComplete() {
         reducer.nowPlaying = nil
     }
-    
+
     func onZoomInAnimationComplete() {
         reducer.displayMode = .playing
     }
-    
+
     func onZoomOutAnimationStarted() {
         reducer.displayMode = .grid
     }
-    
+
     func onZoomOutAnimationComplete() {
         reducer.displayMode = .grid
         reducer.nowPlaying = nil
+    }
+
+    private func grantAllPermissions() {
+        if SFSpeechRecognizer.authorizationStatus() != .authorized {
+            SFSpeechRecognizer.requestAuthorization { _ in }
+        }
+
+        if AVAudioSession.sharedInstance().recordPermission != .granted {
+            AVAudioSession.sharedInstance().requestRecordPermission { _ in }
+        }
     }
 }
