@@ -62,7 +62,6 @@ struct RootView: View {
     }
 
     func onGalleryItemSelected(_ item: GalleryItem) {
-        print("select")
         reducer.nowPlaying = item
         reducer.displayMode = .zoomIn
     }
