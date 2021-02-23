@@ -9,6 +9,8 @@ import SwiftUI
 import Speech
 
 struct RecordView: View {
+    
+    var onSessionComplete: (() -> Void)?
 
     private let lpRecordWidth: CGFloat = 320
     private let lpRecordHeight: CGFloat = 320
@@ -17,8 +19,9 @@ struct RecordView: View {
 
     @Environment(\.presentationMode) var presentationMode
 
-    init() {
+    init(onSessionComplete: (() -> Void)?) {
         viewModel = RecordViewModel()
+        self.onSessionComplete = onSessionComplete
     }
 
     var background: some View {
@@ -54,6 +57,7 @@ struct RecordView: View {
                         )
                     )
                     viewModel.stopSession()
+                    onSessionComplete?()
                     presentationMode.wrappedValue.dismiss()
                 }
             }

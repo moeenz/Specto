@@ -6,17 +6,29 @@
 //
 
 import SwiftUI
-import Speech
 
 struct ContentView: View {
 
-    init() {
-        if SFSpeechRecognizer.authorizationStatus() != .authorized {
-            SFSpeechRecognizer.requestAuthorization {_ in }
+    @State private var shouldDisplayInfo: Bool = !ContentView.isInfoDisplayed()
+
+    var body: some View {
+        if shouldDisplayInfo {
+            InfoView(onDismissHandler: onDismissHandler)
+        } else {
+            RootView()
         }
     }
 
-    var body: some View {
-        RootView()
+    func onDismissHandler() {
+        UserDefaults.standard.setValue(true, forKey: "IsInfoDisplayed")
+        shouldDisplayInfo = false
+    }
+
+    private static func isInfoDisplayed() -> Bool {
+        if let displayed = UserDefaults.standard.value(forKey: "IsInfoDisplayed") as? Bool {
+            return displayed == true
+        }
+
+        return false
     }
 }

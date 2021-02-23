@@ -31,13 +31,14 @@ class RootReducer: ObservableObject {
                                               .red, .orange, .yellow, .purple]
 
     init() {
-        let context = PersistenceController.init().container.viewContext
+        fetchLibraryItems()
+    }
 
+    func fetchLibraryItems() {
+        let context = PersistenceController.init().container.viewContext
+    
         if let result = RecordingInteractor(context).findAll() {
-            if result.count == 0 {
-                isEmpty = true
-                return
-            }
+            isEmpty = (result.count == 0)
 
             library = result.enumerated().map { (index, element) in
                 GalleryItem(id: index,
@@ -51,7 +52,7 @@ class RootReducer: ObservableObject {
             }
         }
     }
-    
+
     private func getCleanKeywords(for recording: Recording) -> [String] {
         let processedKeywords = recording.getKeywords()
 

@@ -46,13 +46,14 @@ struct RecordItemView: View {
         ZStack {
             RoundedRectangle.init(cornerRadius: 5)
                 .fill(coverColor)
-            
+
             VStack(alignment: .leading) {
                 ForEach(keywords, id: \.self) { keyword in
                     Text(keyword.uppercased())
                         .font(coverFont)
                         .foregroundColor(Color.black)
                         .frame(maxHeight: .infinity)
+                        .lineLimit(1)
                         .allowsTightening(true)
                         .minimumScaleFactor(0.01)
                 }
