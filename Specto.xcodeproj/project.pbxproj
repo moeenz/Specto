@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F28AA5025E51DCB00D66538 /* StopWatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F28AA4F25E51DCB00D66538 /* StopWatchView.swift */; };
 		0F43C4BB25E2A81300B69531 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 0F43C4BA25E2A81300B69531 /* Kingfisher */; };
 		0F87065825DEB3B400C31CA7 /* Recording+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F87065725DEB3B400C31CA7 /* Recording+extension.swift */; };
 		0F87065D25DEBBFA00C31CA7 /* PlayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F87065C25DEBBFA00C31CA7 /* PlayViewModel.swift */; };
@@ -64,6 +65,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F28AA4F25E51DCB00D66538 /* StopWatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopWatchView.swift; sourceTree = "<group>"; };
 		0F87065725DEB3B400C31CA7 /* Recording+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Recording+extension.swift"; sourceTree = "<group>"; };
 		0F87065C25DEBBFA00C31CA7 /* PlayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayViewModel.swift; sourceTree = "<group>"; };
 		0FBA259825DDA6D50001D9D3 /* Specto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Specto.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -296,6 +298,7 @@
 				0FE7206125DDAF3600CB6B06 /* AudioVisualizer.swift */,
 				0FE2990325E2FE2400AD95EA /* RecordButton.swift */,
 				0FE2990825E2FF5600AD95EA /* StopButton.swift */,
+				0F28AA4F25E51DCB00D66538 /* StopWatchView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -567,6 +570,7 @@
 				0FE7201B25DDAB9300CB6B06 /* FFT.swift in Sources */,
 				0FE7203525DDAC4900CB6B06 /* RecordingInteractor.swift in Sources */,
 				0F87065825DEB3B400C31CA7 /* Recording+extension.swift in Sources */,
+				0F28AA5025E51DCB00D66538 /* StopWatchView.swift in Sources */,
 				0FE2991D25E3B43800AD95EA /* RootReducer.swift in Sources */,
 				0FE7202B25DDABE500CB6B06 /* DataStore.xcdatamodeld in Sources */,
 				0FE7204E25DDAD6300CB6B06 /* RecordViewModel.swift in Sources */,

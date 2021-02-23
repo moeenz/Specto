@@ -13,6 +13,8 @@ struct GalleryItem: Identifiable, Equatable {
     let keywords: [String]
     let image: String?
     let audio: String?
+    let coverFont:  Font
+    let coverColor: Color
 
     public static func == (lhs: GalleryItem, rhs: GalleryItem) -> Bool {
         return lhs.id == rhs.id

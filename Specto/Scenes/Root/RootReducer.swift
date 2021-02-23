@@ -23,20 +23,42 @@ class RootReducer: ObservableObject {
     @Published var isEmpty: Bool = false
     
     @Published var displayMode: RootDisplayMode = .grid
+    
+    private let coverFontDesignOptions: [Font.Design] = [.default, .monospaced, .rounded, .serif]
+    private let coverFontWeightOptions: [Font.Weight] = [.heavy, .ultraLight, .medium, .ultraLight]
+    private let coverColorOptions: [Color] = [.red, .orange, .yellow, .purple,
+                                              .green, .pink, .blue,
+                                              .red, .orange, .yellow, .purple]
 
     init() {
-
         let context = PersistenceController.init().container.viewContext
 
         if let result = RecordingInteractor(context).findAll() {
+            if result.count == 0 {
+                isEmpty = true
+                return
+            }
+
             library = result.enumerated().map { (index, element) in
                 GalleryItem(id: index,
-                            keywords: element.getKeywords(),
+                            keywords: getCleanKeywords(for: element),
                             image: element.imagePath,
-                            audio: element.filePath)
+                            audio: element.filePath,
+                            coverFont: .system(size: 24,
+                                               weight: coverFontWeightOptions.randomElement() ?? .regular,
+                                               design: coverFontDesignOptions.randomElement() ?? .default),
+                            coverColor: coverColorOptions.randomElement() ?? .green)
             }
-        } else {
-            isEmpty = true
         }
+    }
+    
+    private func getCleanKeywords(for recording: Recording) -> [String] {
+        let processedKeywords = recording.getKeywords()
+
+        if processedKeywords == [] || processedKeywords ==  [""] {
+            return ["No", "Context", "Detected"]
+        }
+
+        return processedKeywords
     }
 }

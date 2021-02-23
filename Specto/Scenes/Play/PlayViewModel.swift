@@ -8,20 +8,24 @@
 import Foundation
 import AVKit
 
-final class PlayViewModel: NSObject, ObservableObject {
+class PlayViewModel: NSObject, ObservableObject {
     
-    var onPlayFinishHandler: (() -> Void)?
     @Published var isPlaying = true
     
-    var player: AVAudioPlayer? = nil
+    var onPlayFinishHandler: (() -> Void)?
+
+    private var player: AVAudioPlayer? = nil
     
+    private let audioSession = AVAudioSession.sharedInstance()
+
     func play(item: GalleryItem, onPlayFinishHandler: (() -> Void)?) {
-        
         self.onPlayFinishHandler = onPlayFinishHandler
 
         let url = RecordingInteractor.getDocumentsDirectory().appendingPathComponent(item.audio!)
+
         do {
-            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: nil)
+            try audioSession.setCategory(.playback)
+            player = try AVAudioPlayer(contentsOf: url)
             player?.delegate = self
             player?.play()
         } catch _{
@@ -31,17 +35,14 @@ final class PlayViewModel: NSObject, ObservableObject {
 }
 
 extension PlayViewModel: AVAudioPlayerDelegate {
-    
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        self.player?.stop()
+        self.player = nil
 
+        isPlaying = false
 
-            self.player?.stop()
-            self.player = nil
-            isPlaying = false
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                self.onPlayFinishHandler?()
-            }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+            self?.onPlayFinishHandler?()
+        }
     }
 }
-
-

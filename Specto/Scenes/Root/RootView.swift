@@ -29,8 +29,11 @@ struct RootView: View {
             }
             .edgesIgnoringSafeArea(.bottom)
             RecordButton()
+                .opacity(reducer.nowPlaying == nil ? 1: 0.5)
                 .onTapGesture {
-                    isRecordSheetOpen.toggle()
+                    if reducer.nowPlaying == nil {
+                        isRecordSheetOpen.toggle()
+                    }
                 }
                 .frame(height: 150, alignment: .bottom)
                 .sheet(isPresented: $isRecordSheetOpen) {
@@ -42,18 +45,23 @@ struct RootView: View {
     var body: some View {
         ZStack {
             background
-            if reducer.displayMode == .playing {
-                PlayView(item: reducer.nowPlaying!,
-                         onPlayFinished: onPlayFinished)
-            } else {
-                GalleryView(displayMode: reducer.displayMode,
-                            onGalleryItemSelected: onGalleryItemSelected,
-                            onZoomInAnimationComplete: onZoomInAnimationComplete,
-                            onZoomOutAnimationComplete: onZoomOutAnimationComplete,
-                            onZoomOutAnimationStarted: onZoomOutAnimationStarted,
-                            reducer: reducer)
-                    .padding(EdgeInsets(top: 32, leading: 0, bottom: 0, trailing: 0))
+            VStack {
+                if reducer.displayMode == .playing {
+                    PlayView(item: reducer.nowPlaying!,
+                             onPlayFinished: onPlayFinished)
+                } else {
+                    GalleryView(displayMode: reducer.displayMode,
+                                onGalleryItemSelected: onGalleryItemSelected,
+                                onZoomInAnimationComplete: onZoomInAnimationComplete,
+                                onZoomOutAnimationComplete: onZoomOutAnimationComplete,
+                                onZoomOutAnimationStarted: onZoomOutAnimationStarted,
+                                reducer: reducer)
+                        .padding(EdgeInsets(top: 32, leading: 0, bottom: 0, trailing: 0))
+                }
             }
+            .frame(maxWidth: .infinity,maxHeight: .infinity, alignment: .center)
+            .padding(EdgeInsets(top: 0, leading: 0, bottom: 80, trailing: 0))
+
             VStack {
                 Spacer()
                 recordPane
