@@ -1,39 +1,72 @@
 # Specto
 
-Specto is an audio visualizer application using FFT.
+<p style="margin-top: 24px">
+<img src="./Design/specto-banner.jpeg" width="640">
+</p>
 
-**_There are currently minor issues with animations but we're freezing this branch per requested. Check out `main` branch for complete working code and docs. Thanks!_**
+**Specto** is an audio visualizer application that also transcribes user input using Apple speech recognition API. Each recording session is tagged with highlighted keywords by the TextRank algorithm. Designed and developed by Taha Mousavi, Abbas Mousavi and Moeen Zamani for SwiftUI Jam, Feb 2021.
 
 ## Setup
 
-This project uses both Cocoapods and Swift package manager to dependency issues. Install Cocoapods dependencies using:
+This project uses both Cocoapods and SwiftPM due to dependency issues. Install Cocoapods dependencies using:
 
 ```bash
     pod install
 ```
 
-## Recorder
+Open `Specto.xcworkspace` and Xcode will take care of SwiftPM dependencies.
 
-Each session is processed by Speech API to detect verbal context. There's a `RecordingSession` object which handles both recording and Speech-to-Text capabilities. It also outputs FFT amplitudes to be visualized by some view.
+## Architecture
 
-```swift
-    do {
-        try session = RecordingSession()
-        try session.startSession()
-    } catch {}
-```
+Right now an approach similar to MVVM is taken for the application architecture. All shared states between views is handled by the `AppModel` object which can be shared using `EnvironmentObject` property wrapper. Individual states for views are managed by corresponding view model object. View model objects also take control of actions which lead to state changes. Each view then subscribes to view model changes by using the `ObservedObject` property wrapper.
 
-It's necessary to call `RecordingSession.stopSession()` to persist the session.
+## Views
 
-```swift
-    session.stopSession()
-```
+Specto consists of four main views that we go over briefly here:
 
-This method persists audio file and the processed context using CoreData model objects.
+- RootView
+- GalleryView
+- PlayView
+- RecordView
 
-## SwiftUI Covered APIs
+### RootView
 
-Description on what APIs we have used in SwiftUI on each view. Could be useful.
+**RootView** is the container view which holds `GalleryView` and `PlayView`. Content is displayed along with the sticky record pane displayed at the bottom.
+
+### GalleryView
+
+**GalleryView** is the library view which displays all recording sessions. `matchedGeometryEffect` modifier is used for the zooming animation.
+
+<p float="left" style="margin-top: 32px">
+<img src="./Design/Screenshots/galleryview-empty.png" width="320">
+<img src="./Design/Screenshots/galleryview-full.png" width="320">
+</p>
+
+### RecordView
+
+**RecordView** is the responsible one for starting and storing a session. It holds the `AudioVisualizer` view which uses fast fourier transforms to project calculated paths over the spinning LP record. The TextRank algorithm is applied at the end of the session to detect verbal context.
+
+<p style="margin-top: 32px">
+<img src="./Design/Screenshots/recordview.png" width="320">
+</p>
+
+### PlayView
+
+**PlayView** is responsibe for playing a recording session. At the end of each session, the resulting visual is stored as an image which will be displayed during playback. Highlighted keywords will also appear on the top while playing.
+
+<p style="margin-top: 32px">
+<img src="./Design/Screenshots/playview.png" width="320">
+</p>
+
+## Design
+
+Check out the [Design](./Design) folder for more information about the creative process.
+
+## Third party libraries
+
+- [**AudioKit:**](https://github.com/AudioKit/AudioKit) Used for managing AV input/output.
+- [**KingFisher:**](https://github.com/onevcat/Kingfisher) Used for displaying cover images.
+- [**Reductio:**](https://github.com/fdzsergio/Reductio) User for detecting verbal context.
 
 ## License
 
