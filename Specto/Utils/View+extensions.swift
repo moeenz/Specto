@@ -20,4 +20,10 @@ extension View {
             }
         }
     }
+
+    func asImage(size: CGSize) -> UIImage {
+        let controller = UIHostingController(rootView: self)
+        controller.view.bounds = CGRect(origin: .zero, size: size)
+        return controller.view.asImage()
+    }
 }

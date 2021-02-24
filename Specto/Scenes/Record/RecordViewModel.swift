@@ -5,28 +5,28 @@
 //  Created by Moeen Zamani on 2/17/21.
 //
 
-import Foundation
 import UIKit
 
 class RecordViewModel: ObservableObject, FFT, Scripter {
+
+    var onSessionComplete: (() -> Void)?
+
     @Published var amplitudes = [[Double]]()
     @Published var text: String = "Start speaking!"
     @Published var recording = false
-    
-    private var image = UIImage()
-    
-    func setImage(_ image: UIImage) {
-        self.image = image
-    }
+    @Published var recordSessionFailed = false
 
     private var session: RecordingSession?
-    
-    init() {
+    private var image = UIImage()
+
+    init(onSessionComplete: (() -> Void)?) {
+        self.onSessionComplete = onSessionComplete
+
         do {
             try session = RecordingSession()
             session?.delegate = self
         } catch {
-            print("pekh")
+            recordSessionFailed = true
         }
     }
 
@@ -35,16 +35,20 @@ class RecordViewModel: ObservableObject, FFT, Scripter {
             try session?.startSession()
         } catch {}
     }
-    
+
     func stopSession() {
-        session?.stopSession(with: self.image)
+        session?.stopSession(with: image)
     }
 
     func handoff(amplitudes: [[Double]]) {
         self.amplitudes = amplitudes
     }
-    
+
     func handoff(text: String) {
         self.text = text
+    }
+
+    func setImage(_ image: UIImage) {
+        self.image = image
     }
 }

@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct SpectoApp: App {
+
+    private let appModel = AppModel()
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            AppView()
+                .environmentObject(appModel)
         }
     }
 }

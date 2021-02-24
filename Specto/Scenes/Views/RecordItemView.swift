@@ -8,18 +8,15 @@ enum RecordDisplayMode {
 }
 
 struct RecordItemView: View {
-
-    private let downwardAbyss: CGFloat = UIScreen.main.bounds.maxY
-    private let upwardAbyss: CGFloat = UIScreen.main.bounds.minY
-
     var coverColor: Color = .green
     var coverFont: Font = .system(size: 20, weight: .heavy, design: .default)
     var image: String?
     var keywords: [String]
 
+    private let downwardAbyss: CGFloat = UIScreen.main.bounds.maxY
+
     private var animation: Animation {
         Animation
-            
             .linear(duration: 7.5)
             .repeatForever(autoreverses: false)
     }

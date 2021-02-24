@@ -10,10 +10,17 @@
 		0F28AA5025E51DCB00D66538 /* StopWatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F28AA4F25E51DCB00D66538 /* StopWatchView.swift */; };
 		0F28AA5D25E584BB00D66538 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F28AA5C25E584BB00D66538 /* InfoView.swift */; };
 		0F43C4BB25E2A81300B69531 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 0F43C4BA25E2A81300B69531 /* Kingfisher */; };
+		0F474F0A25E6B2CE008A2C2A /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F474F0925E6B2CE008A2C2A /* RootViewModel.swift */; };
+		0F474F0F25E6B54F008A2C2A /* InfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F474F0E25E6B54F008A2C2A /* InfoViewModel.swift */; };
 		0F87065825DEB3B400C31CA7 /* Recording+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F87065725DEB3B400C31CA7 /* Recording+extension.swift */; };
 		0F87065D25DEBBFA00C31CA7 /* PlayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F87065C25DEBBFA00C31CA7 /* PlayViewModel.swift */; };
+		0F91749F25E66E91003EBA1E /* UIImage+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F91749E25E66E91003EBA1E /* UIImage+extensions.swift */; };
+		0F9174A425E66EFF003EBA1E /* RectGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9174A325E66EFF003EBA1E /* RectGetter.swift */; };
+		0F9174AC25E6745C003EBA1E /* UIView+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9174AB25E6745C003EBA1E /* UIView+extensions.swift */; };
+		0F9174B925E675BF003EBA1E /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9174B825E675BF003EBA1E /* AppModel.swift */; };
+		0F9174C925E68DCB003EBA1E /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9174C825E68DCB003EBA1E /* AppView.swift */; };
+		0F9174D425E692CA003EBA1E /* AppVisibleScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9174D325E692CA003EBA1E /* AppVisibleScene.swift */; };
 		0FBA259C25DDA6D50001D9D3 /* SpectoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBA259B25DDA6D50001D9D3 /* SpectoApp.swift */; };
-		0FBA259E25DDA6D50001D9D3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBA259D25DDA6D50001D9D3 /* ContentView.swift */; };
 		0FBA25A025DDA6D60001D9D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0FBA259F25DDA6D60001D9D3 /* Assets.xcassets */; };
 		0FBA25A325DDA6D60001D9D3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0FBA25A225DDA6D60001D9D3 /* Preview Assets.xcassets */; };
 		0FBA25AE25DDA6D60001D9D3 /* SpectoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBA25AD25DDA6D60001D9D3 /* SpectoTests.swift */; };
@@ -24,7 +31,6 @@
 		0FE2990425E2FE2400AD95EA /* RecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE2990325E2FE2400AD95EA /* RecordButton.swift */; };
 		0FE2990925E2FF5600AD95EA /* StopButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE2990825E2FF5600AD95EA /* StopButton.swift */; };
 		0FE2991525E39CA300AD95EA /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE2991425E39CA300AD95EA /* RootView.swift */; };
-		0FE2991D25E3B43800AD95EA /* RootReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE2991C25E3B43800AD95EA /* RootReducer.swift */; };
 		0FE7200125DDAA8F00CB6B06 /* AudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0FE7200025DDAA8F00CB6B06 /* AudioKit */; };
 		0FE7200B25DDAB5A00CB6B06 /* Carl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE7200A25DDAB5A00CB6B06 /* Carl.swift */; };
 		0FE7201325DDAB8100CB6B06 /* Leaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE7201225DDAB8100CB6B06 /* Leaker.swift */; };
@@ -68,11 +74,18 @@
 /* Begin PBXFileReference section */
 		0F28AA4F25E51DCB00D66538 /* StopWatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopWatchView.swift; sourceTree = "<group>"; };
 		0F28AA5C25E584BB00D66538 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
+		0F474F0925E6B2CE008A2C2A /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
+		0F474F0E25E6B54F008A2C2A /* InfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewModel.swift; sourceTree = "<group>"; };
 		0F87065725DEB3B400C31CA7 /* Recording+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Recording+extension.swift"; sourceTree = "<group>"; };
 		0F87065C25DEBBFA00C31CA7 /* PlayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayViewModel.swift; sourceTree = "<group>"; };
+		0F91749E25E66E91003EBA1E /* UIImage+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+extensions.swift"; sourceTree = "<group>"; };
+		0F9174A325E66EFF003EBA1E /* RectGetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectGetter.swift; sourceTree = "<group>"; };
+		0F9174AB25E6745C003EBA1E /* UIView+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+extensions.swift"; sourceTree = "<group>"; };
+		0F9174B825E675BF003EBA1E /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
+		0F9174C825E68DCB003EBA1E /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
+		0F9174D325E692CA003EBA1E /* AppVisibleScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVisibleScene.swift; sourceTree = "<group>"; };
 		0FBA259825DDA6D50001D9D3 /* Specto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Specto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FBA259B25DDA6D50001D9D3 /* SpectoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpectoApp.swift; sourceTree = "<group>"; };
-		0FBA259D25DDA6D50001D9D3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0FBA259F25DDA6D60001D9D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0FBA25A225DDA6D60001D9D3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0FBA25A425DDA6D60001D9D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -88,7 +101,6 @@
 		0FE2990325E2FE2400AD95EA /* RecordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordButton.swift; sourceTree = "<group>"; };
 		0FE2990825E2FF5600AD95EA /* StopButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopButton.swift; sourceTree = "<group>"; };
 		0FE2991425E39CA300AD95EA /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
-		0FE2991C25E3B43800AD95EA /* RootReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootReducer.swift; sourceTree = "<group>"; };
 		0FE7200A25DDAB5A00CB6B06 /* Carl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Carl.swift; sourceTree = "<group>"; };
 		0FE7201225DDAB8100CB6B06 /* Leaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leaker.swift; sourceTree = "<group>"; };
 		0FE7201A25DDAB9300CB6B06 /* FFT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFT.swift; sourceTree = "<group>"; };
@@ -151,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				0F28AA5C25E584BB00D66538 /* InfoView.swift */,
+				0F474F0E25E6B54F008A2C2A /* InfoViewModel.swift */,
 			);
 			path = Info;
 			sourceTree = "<group>";
@@ -186,7 +199,6 @@
 				0FE7200725DDAB3800CB6B06 /* Recognition */,
 				0FE7200525DDAB2600CB6B06 /* Recording */,
 				0FBA259B25DDA6D50001D9D3 /* SpectoApp.swift */,
-				0FBA259D25DDA6D50001D9D3 /* ContentView.swift */,
 				0FBA259F25DDA6D60001D9D3 /* Assets.xcassets */,
 				0FBA25A425DDA6D60001D9D3 /* Info.plist */,
 				0FBA25A125DDA6D60001D9D3 /* Preview Content */,
@@ -224,7 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				0FE2991425E39CA300AD95EA /* RootView.swift */,
-				0FE2991C25E3B43800AD95EA /* RootReducer.swift */,
+				0F474F0925E6B2CE008A2C2A /* RootViewModel.swift */,
 			);
 			path = Root;
 			sourceTree = "<group>";
@@ -236,6 +248,7 @@
 				0FE7202F25DDABFC00CB6B06 /* PersistenceController.swift */,
 				0FE7203425DDAC4900CB6B06 /* RecordingInteractor.swift */,
 				0FE7203925DDAC6800CB6B06 /* RecordingSession.swift */,
+				0F87065725DEB3B400C31CA7 /* Recording+extension.swift */,
 			);
 			path = Recording;
 			sourceTree = "<group>";
@@ -265,6 +278,8 @@
 				0FE7203E25DDAC8400CB6B06 /* Date+extensions.swift */,
 				0FBF84BC25E0D10A002A600E /* View+modifiers.swift */,
 				0FBF84C125E0D12A002A600E /* View+extensions.swift */,
+				0F91749E25E66E91003EBA1E /* UIImage+extensions.swift */,
+				0F9174AB25E6745C003EBA1E /* UIView+extensions.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -278,6 +293,9 @@
 				0FE7206025DDAF1800CB6B06 /* Views */,
 				0FE7204C25DDAD3700CB6B06 /* Gallery */,
 				0FE7204B25DDAD2900CB6B06 /* Record */,
+				0F9174B825E675BF003EBA1E /* AppModel.swift */,
+				0F9174C825E68DCB003EBA1E /* AppView.swift */,
+				0F9174D325E692CA003EBA1E /* AppVisibleScene.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -287,7 +305,6 @@
 			children = (
 				0FE7204D25DDAD6300CB6B06 /* RecordViewModel.swift */,
 				0FE7205525DDADE600CB6B06 /* RecordView.swift */,
-				0F87065725DEB3B400C31CA7 /* Recording+extension.swift */,
 			);
 			path = Record;
 			sourceTree = "<group>";
@@ -310,6 +327,7 @@
 				0FE2990325E2FE2400AD95EA /* RecordButton.swift */,
 				0FE2990825E2FF5600AD95EA /* StopButton.swift */,
 				0F28AA4F25E51DCB00D66538 /* StopWatchView.swift */,
+				0F9174A325E66EFF003EBA1E /* RectGetter.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -562,11 +580,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F9174AC25E6745C003EBA1E /* UIView+extensions.swift in Sources */,
 				0F87065D25DEBBFA00C31CA7 /* PlayViewModel.swift in Sources */,
 				0FE2990925E2FF5600AD95EA /* StopButton.swift in Sources */,
+				0F9174C925E68DCB003EBA1E /* AppView.swift in Sources */,
 				0FE7206225DDAF3600CB6B06 /* AudioVisualizer.swift in Sources */,
 				0FE7203025DDABFC00CB6B06 /* PersistenceController.swift in Sources */,
-				0FBA259E25DDA6D50001D9D3 /* ContentView.swift in Sources */,
+				0F9174A425E66EFF003EBA1E /* RectGetter.swift in Sources */,
 				0FE7202525DDABC100CB6B06 /* Scripter.swift in Sources */,
 				0FE2991525E39CA300AD95EA /* RootView.swift in Sources */,
 				0FE7206825DE708200CB6B06 /* PlayView.swift in Sources */,
@@ -574,24 +594,28 @@
 				0FE7205625DDADE600CB6B06 /* RecordView.swift in Sources */,
 				0FE7208525DEAB9D00CB6B06 /* GalleryItem.swift in Sources */,
 				0FE7205B25DDAE1E00CB6B06 /* GalleryView.swift in Sources */,
+				0F474F0F25E6B54F008A2C2A /* InfoViewModel.swift in Sources */,
 				0FE2990425E2FE2400AD95EA /* RecordButton.swift in Sources */,
+				0F474F0A25E6B2CE008A2C2A /* RootViewModel.swift in Sources */,
 				0FE7200B25DDAB5A00CB6B06 /* Carl.swift in Sources */,
 				0FBA259C25DDA6D50001D9D3 /* SpectoApp.swift in Sources */,
 				0FBF84BD25E0D10A002A600E /* View+modifiers.swift in Sources */,
 				0FE7201B25DDAB9300CB6B06 /* FFT.swift in Sources */,
 				0FE7203525DDAC4900CB6B06 /* RecordingInteractor.swift in Sources */,
 				0F87065825DEB3B400C31CA7 /* Recording+extension.swift in Sources */,
+				0F9174D425E692CA003EBA1E /* AppVisibleScene.swift in Sources */,
 				0F28AA5025E51DCB00D66538 /* StopWatchView.swift in Sources */,
-				0FE2991D25E3B43800AD95EA /* RootReducer.swift in Sources */,
 				0FE7202B25DDABE500CB6B06 /* DataStore.xcdatamodeld in Sources */,
 				0FE7204E25DDAD6300CB6B06 /* RecordViewModel.swift in Sources */,
 				0FE7202025DDABAD00CB6B06 /* Charles.swift in Sources */,
 				0FE7203F25DDAC8400CB6B06 /* Date+extensions.swift in Sources */,
+				0F9174B925E675BF003EBA1E /* AppModel.swift in Sources */,
 				0FE7203A25DDAC6800CB6B06 /* RecordingSession.swift in Sources */,
 				0FE7201325DDAB8100CB6B06 /* Leaker.swift in Sources */,
 				0FBF84C225E0D12A002A600E /* View+extensions.swift in Sources */,
 				0F28AA5D25E584BB00D66538 /* InfoView.swift in Sources */,
 				7C0ED45825DE8DE00080C536 /* LazyView.swift in Sources */,
+				0F91749F25E66E91003EBA1E /* UIImage+extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

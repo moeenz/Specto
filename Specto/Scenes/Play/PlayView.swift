@@ -9,44 +9,38 @@ import SwiftUI
 
 struct PlayView: View {
 
+    @ObservedObject var viewModel: PlayViewModel
+
     private let lpRecordWidth: CGFloat = 320
     private let lpRecordHeight: CGFloat = 320
 
-    var item: GalleryItem
-
-    var onPlayFinished: (() -> Void)?
-
-    @StateObject private var viewModel = PlayViewModel()
-    
-    @State var largeKeywordsOffset: CGFloat = -500
-    
     var largeKeywords: some View {
         VStack {
-            Text(item.keywords.joined(separator: "   "))
+            Text(viewModel.item.keywords.joined(separator: "   "))
                 .font(.system(size: 32, weight: .heavy, design: .default))
-                .foregroundColor(item.coverColor)
+                .foregroundColor(viewModel.item.coverColor)
                 .frame(maxWidth: .infinity)
                 .lineLimit(1)
                 .allowsTightening(true)
                 .minimumScaleFactor(0.01)
                 .animate {
                     if viewModel.isPlaying {
-                        largeKeywordsOffset = 40
+                        viewModel.bringDownKeywords()
                     } else {
-                        largeKeywordsOffset = -500
+                        viewModel.pushUpKeywords()
                     }
                 }
-                .offset(y: largeKeywordsOffset)
+                .offset(y: viewModel.largeKeywordsOffset)
                 .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
         }.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
     }
-    
+
     var discAndCover: some View {
         RecordItemView(
-            coverColor: item.coverColor,
-            coverFont: item.coverFont,
-            image: item.image,
-            keywords: item.keywords,
+            coverColor: viewModel.item.coverColor,
+            coverFont: viewModel.item.coverFont,
+            image: viewModel.item.image,
+            keywords: viewModel.item.keywords,
             coverOffset: viewModel.isPlaying ? 0 : UIScreen.main.bounds.maxY,
             displayMode: viewModel.isPlaying ? .startPlaying : .finishPlaying)
         .frame(width: lpRecordWidth, height: lpRecordHeight, alignment: .center)
@@ -59,7 +53,7 @@ struct PlayView: View {
             if viewModel.isPlaying {
                 discAndCover
                     .onAppear {
-                        viewModel.play(item: item, onPlayFinishHandler: onPlayFinished)
+                        viewModel.play()
                     }
                 largeKeywords
             } else {
@@ -67,6 +61,11 @@ struct PlayView: View {
                 largeKeywords
             }
         }
-        .hiddenNavigationBarStyle()
+            .alert(isPresented: $viewModel.playbackFailed) {
+            Alert(
+                title: Text("Problem Occurred"),
+                message: Text("Could not play record at the moment"),
+                dismissButton: .default(Text("Dismiss")))
+        }
     }
 }
