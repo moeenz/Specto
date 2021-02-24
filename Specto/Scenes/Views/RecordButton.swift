@@ -14,6 +14,7 @@ struct RecordButton: View {
                 .stroke(lineWidth: 4)
                 .fill(Color.red)
                 .frame(width: 60, height: 60)
+
             Circle()
                 .foregroundColor(Color.red)
                 .frame(width: 50, height: 50)
