@@ -14,6 +14,7 @@
 		0F87065D25DEBBFA00C31CA7 /* PlayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F87065C25DEBBFA00C31CA7 /* PlayViewModel.swift */; };
 		0F91749F25E66E91003EBA1E /* UIImage+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F91749E25E66E91003EBA1E /* UIImage+extensions.swift */; };
 		0F9174A425E66EFF003EBA1E /* RectGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9174A325E66EFF003EBA1E /* RectGetter.swift */; };
+		0F9174AC25E6745C003EBA1E /* UIView+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9174AB25E6745C003EBA1E /* UIView+extensions.swift */; };
 		0FBA259C25DDA6D50001D9D3 /* SpectoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBA259B25DDA6D50001D9D3 /* SpectoApp.swift */; };
 		0FBA259E25DDA6D50001D9D3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBA259D25DDA6D50001D9D3 /* ContentView.swift */; };
 		0FBA25A025DDA6D60001D9D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0FBA259F25DDA6D60001D9D3 /* Assets.xcassets */; };
@@ -74,6 +75,7 @@
 		0F87065C25DEBBFA00C31CA7 /* PlayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayViewModel.swift; sourceTree = "<group>"; };
 		0F91749E25E66E91003EBA1E /* UIImage+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+extensions.swift"; sourceTree = "<group>"; };
 		0F9174A325E66EFF003EBA1E /* RectGetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectGetter.swift; sourceTree = "<group>"; };
+		0F9174AB25E6745C003EBA1E /* UIView+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+extensions.swift"; sourceTree = "<group>"; };
 		0FBA259825DDA6D50001D9D3 /* Specto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Specto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FBA259B25DDA6D50001D9D3 /* SpectoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpectoApp.swift; sourceTree = "<group>"; };
 		0FBA259D25DDA6D50001D9D3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 				0FBF84BC25E0D10A002A600E /* View+modifiers.swift */,
 				0FBF84C125E0D12A002A600E /* View+extensions.swift */,
 				0F91749E25E66E91003EBA1E /* UIImage+extensions.swift */,
+				0F9174AB25E6745C003EBA1E /* UIView+extensions.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -568,6 +571,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F9174AC25E6745C003EBA1E /* UIView+extensions.swift in Sources */,
 				0F87065D25DEBBFA00C31CA7 /* PlayViewModel.swift in Sources */,
 				0FE2990925E2FF5600AD95EA /* StopButton.swift in Sources */,
 				0FE7206225DDAF3600CB6B06 /* AudioVisualizer.swift in Sources */,

@@ -16,7 +16,7 @@ struct InfoView: View {
     }
 
     private let appInfoText = """
-    Specto is an audio visualizer application that also transcribes user input using Apple speech recognition API. Each recording session is tagged with highlighted keywords with TextRank algorithm. This application has been developed for SwiftUI Jam, Feb 2021.
+    Specto is an audio visualizer application that also transcribes user input using Apple speech recognition API. Each recording session is tagged with highlighted keywords by the TextRank algorithm. We developed this application for SwiftUI Jam, Feb 2021.
     """
     
     var info: some View {
@@ -62,6 +62,11 @@ struct InfoView: View {
                     .font(.system(size: 16, weight: .thin, design: .default))
                     .foregroundColor(.white)
                     .padding(EdgeInsets(top: 5, leading: 0, bottom: 0, trailing: 0))
+                
+                Text("Follow @spectoapp for more information")
+                    .font(.system(size: 11, weight: .ultraLight, design: .default))
+                    .foregroundColor(.white)
+                    .padding(EdgeInsets(top: 60, leading: 0, bottom: 0, trailing: 0))
 
                 Button(
                     action: {
@@ -82,7 +87,7 @@ struct InfoView: View {
                                 .foregroundColor(.white)
                         }
                     }
-                ).padding(EdgeInsets(top: 60, leading: 20, bottom: 50, trailing: 20))
+                ).padding(EdgeInsets(top: 5, leading: 20, bottom: 50, trailing: 20))
             }
         }
     }

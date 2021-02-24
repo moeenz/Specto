@@ -11,7 +11,7 @@ import SwiftUI
 struct SpectoApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            InfoView()
         }
     }
 }
