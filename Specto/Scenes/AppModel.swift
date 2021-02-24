@@ -1,29 +1,24 @@
 //
-//  RootReducer.swift
+//  AppModel.swift
 //  Specto
 //
-//  Created by Moeen Zamani on 2/22/21.
+//  Created by Moeen Zamani on 2/24/21.
 //
 
 import SwiftUI
 
-enum RootDisplayMode {
-    case grid
-    case zoomIn
-    case zoomOut
-    case playing
-}
+class AppModel: ObservableObject {
 
-class RootReducer: ObservableObject {
+    @Published var shouldDisplayInfoView: Bool = {
+        UserDefaults.standard.value(forKey: "App.shouldDisplayInfoView") as? Bool != false
+    }()
 
     @Published var nowPlaying: GalleryItem? = nil
 
     @Published var library: [GalleryItem] = []
 
-    @Published var isEmpty: Bool = false
-    
-    @Published var displayMode: RootDisplayMode = .grid
-    
+    @Published var visibleScene: AppVisibleScene = .gallery
+
     private let coverFontDesignOptions: [Font.Design] = [.default, .monospaced, .rounded, .serif]
     private let coverFontWeightOptions: [Font.Weight] = [.heavy, .ultraLight, .medium, .ultraLight]
     private let coverColorOptions: [Color] = [.red, .orange, .yellow, .purple,
@@ -31,18 +26,16 @@ class RootReducer: ObservableObject {
                                               .red, .orange, .yellow, .purple]
 
     init() {
-        fetchLibraryItems()
+        refreshLibrary()
     }
 
-    func fetchLibraryItems() {
+    func refreshLibrary() {
         let context = PersistenceController.init().container.viewContext
-    
-        if let result = RecordingInteractor(context).findAll() {
-            isEmpty = (result.count == 0)
 
+        if let result = RecordingInteractor(context).findAll() {
             library = result.enumerated().map { (index, element) in
                 GalleryItem(id: index,
-                            keywords: getCleanKeywords(for: element),
+                            keywords: element.getCleanKeywords(),
                             image: element.imagePath,
                             audio: element.filePath,
                             coverFont: .system(size: 24,
@@ -53,13 +46,34 @@ class RootReducer: ObservableObject {
         }
     }
 
-    private func getCleanKeywords(for recording: Recording) -> [String] {
-        let processedKeywords = recording.getKeywords()
+    func infoViewDisplayed() {
+        UserDefaults.standard.setValue(false, forKey: "App.shouldDisplayInfoView")
+        shouldDisplayInfoView = false
+    }
 
-        if processedKeywords == [] || processedKeywords ==  [""] {
-            return ["No", "Context", "Detected"]
-        }
+    func onGalleryItemSelected(_ item: GalleryItem) {
+        nowPlaying = item
+        visibleScene = .recordZoomIn
+    }
 
-        return processedKeywords
+    func onPlayFinished() {
+        visibleScene = .recordZoomOut
+    }
+
+    func onShrinkAnimationComplete() {
+        nowPlaying = nil
+    }
+
+    func onZoomInAnimationComplete() {
+        visibleScene = .recordPlaying
+    }
+
+    func onZoomOutAnimationStarted() {
+        visibleScene = .gallery
+    }
+
+    func onZoomOutAnimationComplete() {
+        visibleScene = .gallery
+        nowPlaying = nil
     }
 }

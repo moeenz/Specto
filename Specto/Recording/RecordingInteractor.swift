@@ -44,15 +44,13 @@ class RecordingInteractor {
     }
 
     static func generateFileURLs() -> (audio: URL, image: URL) {
-        
         let uuid = UUID().uuidString
         let audioFilename = uuid + ".caf"
         let imageFilename = uuid + ".png"
         return (audio: getDocumentsDirectory().appendingPathComponent(audioFilename),
                 image: getDocumentsDirectory().appendingPathComponent(imageFilename))
     }
-    
-    
+
     static func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         let documentsDirectory = paths[0]

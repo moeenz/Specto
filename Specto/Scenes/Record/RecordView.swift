@@ -6,23 +6,15 @@
 //
 
 import SwiftUI
-import Speech
 
 struct RecordView: View {
-    
-    var onSessionComplete: (() -> Void)?
-
-    private let lpRecordWidth: CGFloat = 320
-    private let lpRecordHeight: CGFloat = 320
 
     @ObservedObject var viewModel: RecordViewModel
 
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.presentationMode) private var presentationMode
 
-    init(onSessionComplete: (() -> Void)?) {
-        viewModel = RecordViewModel()
-        self.onSessionComplete = onSessionComplete
-    }
+    private let lpRecordWidth: CGFloat = 320
+    private let lpRecordHeight: CGFloat = 320
 
     var background: some View {
         Color(red: 81 / 255, green: 81 / 255, blue: 81 / 255).edgesIgnoringSafeArea(.all)
@@ -35,7 +27,8 @@ struct RecordView: View {
     var visualizer: some View {
         AudioVisualizer(amplitudes: viewModel.amplitudes,
                         recording: viewModel.recording)
-            .frame(width: lpRecordWidth, height: lpRecordHeight)}
+            .frame(width: lpRecordWidth, height: lpRecordHeight)
+    }
 
     var liveTranscription: some View {
         Text(viewModel.text)
@@ -53,11 +46,9 @@ struct RecordView: View {
                 if viewModel.recording {
                     viewModel
                         .setImage(visualizer.asImage(size: CGSize(width: lpRecordWidth,
-                                                                  height: lpRecordHeight)
-                        )
-                    )
+                                                                  height: lpRecordHeight)))
                     viewModel.stopSession()
-                    onSessionComplete?()
+                    viewModel.onSessionComplete?()
                     presentationMode.wrappedValue.dismiss()
                 }
             }
@@ -74,12 +65,13 @@ struct RecordView: View {
             VStack {
                 Spacer()
                 visualizer
-                    .padding(EdgeInsets(top: 80, leading: 0, bottom: 0, trailing: 0))
+                    .padding(EdgeInsets(top: 70, leading: 0, bottom: 0, trailing: 0))
                     .onAppear {
                         viewModel.startSession()
                         viewModel.recording.toggle()
                     }
                 liveTranscription
+                    .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
                 Spacer()
             }
             VStack {
@@ -87,6 +79,12 @@ struct RecordView: View {
                 stopButton
                     .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
             }
+        }
+        .alert(isPresented: $viewModel.recordSessionFailed) {
+            Alert(
+                title: Text("Problem Occurred"),
+                message: Text("Could not start recording session at the moment"),
+                dismissButton: .default(Text("Dismiss")))
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
         .hiddenNavigationBarStyle()

@@ -10,13 +10,13 @@ import Speech
 
 struct RootView: View {
 
-    @StateObject private var reducer = RootReducer()
+    @EnvironmentObject var appModel: AppModel
 
-    @State private var isRecordSheetOpen = false
+    @ObservedObject var viewModel: RootViewModel
 
-    @State private var zoomedItem: GalleryItem?
+    init(viewModel: RootViewModel) {
+        self.viewModel = viewModel
 
-    init() {
         grantAllPermissions()
     }
 
@@ -34,16 +34,16 @@ struct RootView: View {
                 .fill(Color(red: 81 / 255, green: 81 / 255, blue: 81 / 255))
                 .frame(height: 100, alignment: .center)
             RecordButton()
-                .opacity(reducer.nowPlaying == nil ? 1: 0.5)
+                .opacity(appModel.nowPlaying == nil ? 1: 0.5)
                 .onTapGesture {
-                    if reducer.nowPlaying == nil {
-                        isRecordSheetOpen.toggle()
+                    if appModel.nowPlaying == nil {
+                        viewModel.recordButtonTouched()
                     }
                 }
-                .sheet(isPresented: $isRecordSheetOpen) {
-                    RecordView(onSessionComplete: {
-                        reducer.fetchLibraryItems()
-                    })
+                .sheet(isPresented: $viewModel.isRecordSheetOpen) {
+                    RecordView(viewModel: RecordViewModel(onSessionComplete: {
+                        appModel.refreshLibrary()
+                    }))
                 }
         }
     }
@@ -52,16 +52,17 @@ struct RootView: View {
         ZStack {
             background
             VStack {
-                if reducer.displayMode == .playing {
-                    PlayView(item: reducer.nowPlaying!,
-                             onPlayFinished: onPlayFinished)
+                if appModel.visibleScene == .recordPlaying, let nowPlaying = appModel.nowPlaying {
+                    PlayView(viewModel: PlayViewModel(item: nowPlaying,
+                                                      onPlayFinishedHandler: appModel.onPlayFinished))
                 } else {
-                    GalleryView(displayMode: reducer.displayMode,
-                                onGalleryItemSelected: onGalleryItemSelected,
-                                onZoomInAnimationComplete: onZoomInAnimationComplete,
-                                onZoomOutAnimationComplete: onZoomOutAnimationComplete,
-                                onZoomOutAnimationStarted: onZoomOutAnimationStarted,
-                                reducer: reducer)
+                    GalleryView(items: appModel.library,
+                                nowPlaying: appModel.nowPlaying,
+                                visibleScene: appModel.visibleScene,
+                                onGalleryItemSelected: appModel.onGalleryItemSelected,
+                                onZoomInAnimationComplete: appModel.onZoomInAnimationComplete,
+                                onZoomOutAnimationStarted: appModel.onZoomOutAnimationStarted,
+                                onZoomOutAnimationComplete: appModel.onZoomOutAnimationComplete)
                         .padding(EdgeInsets(top: 32, leading: 0, bottom: 0, trailing: 0))
                 }
             }
@@ -75,32 +76,6 @@ struct RootView: View {
                     .edgesIgnoringSafeArea(.bottom)
             }
         }
-    }
-
-    func onGalleryItemSelected(_ item: GalleryItem) {
-        reducer.nowPlaying = item
-        reducer.displayMode = .zoomIn
-    }
-
-    func onPlayFinished() {
-        reducer.displayMode = .zoomOut
-    }
-
-    func onShrinkAnimationComplete() {
-        reducer.nowPlaying = nil
-    }
-
-    func onZoomInAnimationComplete() {
-        reducer.displayMode = .playing
-    }
-
-    func onZoomOutAnimationStarted() {
-        reducer.displayMode = .grid
-    }
-
-    func onZoomOutAnimationComplete() {
-        reducer.displayMode = .grid
-        reducer.nowPlaying = nil
     }
 
     private func grantAllPermissions() {

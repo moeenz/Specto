@@ -14,7 +14,7 @@ enum CarlError: Error {
 
 /// Carl Friedrich Gauss was the one who originally invented FFT. This is for you Carl!
 class Carl {
-    
+
     var fftDelegate: FFT?
     var leakerDelegate: Leaker?
 
@@ -55,7 +55,7 @@ class Carl {
 
         mic = input
         micMixer = Mixer(mic)
-        
+
         leakMixer = Mixer(micMixer)
 
         micBooster = Fader(leakMixer)
@@ -98,7 +98,7 @@ class Carl {
             let amplitude = Double(20.0 * log10(normalizedBinMagnitude))
 
             let scaledAmplitude = (amplitude + 250) / 229.80
-            
+
             if i / 2 < temp.count {
                 var mappedAmplitude = self.scale(n: scaledAmplitude, start1: 0.3, stop1: 0.9, start2: 0.0, stop2: 1.0)
 

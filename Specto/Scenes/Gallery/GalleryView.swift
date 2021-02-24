@@ -6,27 +6,23 @@
 //
 
 import SwiftUI
-import Kingfisher
-import Speech
 
 struct GalleryView: View {
+
+    @Namespace private var animation
+
+    var items: [GalleryItem]
+    var nowPlaying: GalleryItem?
+    var visibleScene: AppVisibleScene
+
+    var onGalleryItemSelected: ((GalleryItem) -> Void)?
+    var onZoomInAnimationComplete: (() -> Void)?
+    var onZoomOutAnimationStarted: (() -> Void)?
+    var onZoomOutAnimationComplete: (() -> Void)?
 
     private let lpRecordWidth: CGFloat = 320
     private let lpRecordHeight: CGFloat = 320
 
-    var displayMode: RootDisplayMode
-
-    var onGalleryItemSelected: ((GalleryItem) -> Void)?
-    var onZoomInAnimationComplete: (() -> Void)?
-    
-    var onZoomOutAnimationComplete: (() -> Void)?
-    var onZoomOutAnimationStarted: (() -> Void)?
-
-    @ObservedObject var reducer: RootReducer
-
-    @Namespace private var animation
-
-    // Our grid consists  of two equal size columns hence the .flexible() modifier.
     private let columns = [
         GridItem(.flexible()),
         GridItem(.flexible())
@@ -38,7 +34,7 @@ struct GalleryView: View {
             .foregroundColor(Color.white)
             .offset(y: -50)
     }
-    
+
     func buildRecordItemView(item: GalleryItem) -> RecordItemView {
         RecordItemView(coverColor: item.coverColor,
                        coverFont: item.coverFont,
@@ -49,11 +45,11 @@ struct GalleryView: View {
 
     var galleryItems: some View {
         ZStack {
-            if displayMode == .grid {
+            if visibleScene == .gallery {
                 VStack {
                     ScrollView {
                         LazyVGrid(columns: columns, spacing: 50) {
-                            ForEach(reducer.library) { item in
+                            ForEach(items) { item in
                                 buildRecordItemView(item: item)
                                     .onTapGesture {
                                         withAnimation(.easeInOut) {
@@ -71,19 +67,19 @@ struct GalleryView: View {
                 }
             } else {
                 VStack {
-                    buildRecordItemView(item: reducer.nowPlaying!)
-                        .matchedGeometryEffect(id: String(reducer.nowPlaying!.id), in: animation)
+                    buildRecordItemView(item: nowPlaying!)
+                        .matchedGeometryEffect(id: String(nowPlaying!.id), in: animation)
                         .frame(width: lpRecordWidth, height: lpRecordHeight)
                         .onAppear {
-                            if displayMode == .zoomIn {
+                            if visibleScene == .recordZoomIn {
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                                     onZoomInAnimationComplete?()
                                 }
-                            } else if displayMode == .zoomOut {
+                            } else if visibleScene == .recordZoomOut {
                                 withAnimation(.easeInOut) {
                                     onZoomOutAnimationStarted?()
                                 }
-                                
+
                                 DispatchQueue.main.asyncAfter(deadline: .now() +  1) {
                                     onZoomOutAnimationComplete?()
                                 }
@@ -96,9 +92,9 @@ struct GalleryView: View {
 
     var body: some View {
         ZStack {
-            if reducer.isEmpty {
+            if items.count == 0 {
                 emptyGallery
-            } else {
+            } else  {
                 galleryItems
                     .padding()
             }

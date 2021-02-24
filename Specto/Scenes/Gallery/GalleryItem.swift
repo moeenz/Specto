@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-/// Tiny view model for GalleryItemView view below.
 struct GalleryItem: Identifiable, Equatable {
     let id: Int
     let keywords: [String]

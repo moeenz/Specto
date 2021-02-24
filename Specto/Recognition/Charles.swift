@@ -50,7 +50,7 @@ class Charles: NSObject, SFSpeechRecognizerDelegate {
             recognitionRequest?.append(audioPCMBuffer)
         }
     }
-    
+
     func start() throws {
         if SFSpeechRecognizer.authorizationStatus() == .notDetermined {
             grantSpeechRecognizerPermission()
@@ -74,7 +74,7 @@ class Charles: NSObject, SFSpeechRecognizerDelegate {
             }
         }
     }
-    
+
     func stop() {
         recognitionRequest?.endAudio()
         recognitionRequest = nil
