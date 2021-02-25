@@ -46,7 +46,7 @@ Specto consists of four main views that we go over briefly here:
 
 **RecordView** is the responsible one for starting and storing a session. It holds the `AudioVisualizer` view which uses fast fourier transforms to project calculated paths over the spinning LP record. The TextRank algorithm is applied at the end of the session to detect verbal context.
 
-`AudioVisualizer`view uses angular gradients to project the FFT to concentric circle paths. The whole image shows 50 FFTs calculated five time per second each with 33 components witch makes 1650 visual components in total. We started this with multiple curves with different colors, but that implementation was slow, so we switched to using angular gradients that produces a smoother graphic and has a much better performance. We also use `.drawingGroup` for better performance.
+`AudioVisualizer` view uses angular gradients to project the FFT to concentric circle paths. The whole image shows 50 FFTs calculated five times per second each with 33 components which makes 1650 visual components in total. We started with multiple curves in different colors but that implementation was slow, so we switched to angular gradients producing smoother graphics with much better performance. We also use `.drawingGroup()` for better performance.
 
 <p style="margin-top: 32px">
 <img src="./Design/Screenshots/recordview.png" width="320">

@@ -1,5 +1,7 @@
 # Design
 
+All the works here are credited to Taha Mousavi.
+
 ## Wireframes
 
 <p>
@@ -40,4 +42,10 @@ See the transition from [gallery-transition-animation.mov](./gallery-transition-
 
 <p>
     <img width="800" src="./watch.jpeg">
+</p>
+
+## Sketch Resource
+
+<p>
+    <a href="./Specto.sketch">Download file</a>
 </p>
